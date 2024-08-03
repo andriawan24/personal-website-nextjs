@@ -6,7 +6,7 @@ import Link from 'next/link'
 export default function RecentProjects() {
   return (
     <div className='grid grid-cols-3 gap-6'>
-      <Link href={'https://google.com'} className="cursor-pointer transition-all duration-300 hover:opacity-80 hover:scale-95 active:scale-100 active:duration-100">
+      <Link href={'https://google.com'} className="cursor-pointer transition-all duration-200 hover:opacity-80 hover:scale-[0.99] active:opacity-100">
         <Image className='w-full h-48 object-cover rounded-t-lg' src='https://picsum.photos/seed/picsum/200/300' width={700} height={600} loading='lazy' alt='This is generated image from lorem picsum' />
         <div className='bg-color-background-card-dark rounded-b-lg p-4'>
           <h5 className='text-xl font-bold text-color-text-primary leading-140'>Pegipegi</h5>
@@ -19,7 +19,7 @@ export default function RecentProjects() {
           </div>
         </div>
       </Link>
-      <div className="card">
+      <Link href={'https://google.com'} className="cursor-pointer transition-all duration-200 hover:opacity-80 hover:scale-[0.99] active:opacity-100">
         <Image className='w-full h-48 object-cover rounded-t-lg' src='https://picsum.photos/seed/picsum/200/300' width={700} height={600} loading='lazy' alt='This is generated image from lorem picsum' />
         <div className='bg-color-background-card-dark rounded-b-lg p-4'>
           <h5 className='text-xl font-bold text-color-text-primary leading-140'>Pegipegi</h5>
@@ -31,8 +31,8 @@ export default function RecentProjects() {
             <Pill text='+2' />
           </div>
         </div>
-      </div>
-      <div className="card">
+      </Link>
+      <Link href={'https://google.com'} className="cursor-pointer transition-all duration-200 hover:opacity-80 hover:scale-[0.99] active:opacity-100">
         <Image className='w-full h-48 object-cover rounded-t-lg' src='https://picsum.photos/seed/picsum/200/300' width={700} height={600} loading='lazy' alt='This is generated image from lorem picsum' />
         <div className='bg-color-background-card-dark rounded-b-lg p-4'>
           <h5 className='text-xl font-bold text-color-text-primary leading-140'>Pegipegi</h5>
@@ -44,7 +44,7 @@ export default function RecentProjects() {
             <Pill text='+2' />
           </div>
         </div>
-      </div>
+      </Link>
     </div>
   )
 }

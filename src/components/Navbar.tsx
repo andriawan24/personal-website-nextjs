@@ -22,7 +22,7 @@ const menus: MenuType[] = [
 export default function Navbar() {
   return (
     <div className='flex flex-row justify-between items-center px-32 py-6'>
-      <Link href='/' className='cursor-pointer'>
+      <Link href='/' className='cursor-pointer hover:scale-105 duration-200 transition-all active:scale-100 active:duration-0'>
         <Image src={'/images/img_logo.png'} width={80} height={80} alt={Strings.imageLogoAlt} />
       </Link>
       <ul className='flex flex-row items-center gap-7'>
