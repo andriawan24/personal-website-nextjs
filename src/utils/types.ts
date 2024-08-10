@@ -1,6 +1,6 @@
 export interface MenuType {
-  name: string
-  url: string
+  name: string;
+  url: string;
 }
 
 export interface SocialMediaType {
