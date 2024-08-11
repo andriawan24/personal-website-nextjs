@@ -51,9 +51,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${plusJakartaSans.className} bg-color-background-dark`}>
-        <Navbar />
         {children}
-        <Footer />
       </body>
     </html>
   );

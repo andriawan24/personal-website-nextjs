@@ -3,7 +3,11 @@ import { Strings } from "@/utils/strings";
 import Image from "next/image";
 import React from "react";
 
-export default function ProjectsDetail({ params }: { params: { id: string } }) {
+export default function ProjectDetailDetail({
+  params,
+}: {
+  params: { id: string };
+}) {
   return (
     <main>
       <div className="px-4 min-w-full">

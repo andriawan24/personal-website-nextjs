@@ -2,7 +2,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import RecentProjects from "@/components/RecentProjects";
 import React from "react";
 
-export default function Blogs() {
+export default function BlogsPage() {
   return (
     <div className="px-4 md:px-32">
       <Breadcrumb title="Blogs" />

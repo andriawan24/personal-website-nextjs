@@ -2,7 +2,7 @@ import Hero from "@/components/HeroLanding";
 import RecentProjects from "@/components/RecentProjects";
 import TitleWithLink from "@/components/views/TitleWithLink";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <main>
       <Hero />

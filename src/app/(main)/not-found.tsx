@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-export default function NotFound() {
+export default function NotFoundPage() {
   return (
     <div className="flex flex-col gap-6 absolute top-0 bg-color-background-dark w-full h-full justify-center items-center">
       <div className="text-5xl font-bold text-color-text-primary">
