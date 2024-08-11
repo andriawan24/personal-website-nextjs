@@ -1,5 +1,12 @@
-import { redirect } from "next/navigation";
+import { verifySession } from "@/lib/session";
 
-export default function AdminPage() {
-  return <div>Home Page Admin</div>;
+export default async function AdminPage() {
+  const user = await verifySession();
+  if (!user) return null;
+
+  return (
+    <div>
+      <h1>Welcome {user.user.name}</h1>
+    </div>
+  );
 }

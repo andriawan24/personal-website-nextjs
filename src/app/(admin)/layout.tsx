@@ -5,5 +5,9 @@ export default function AdminLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <section>{children}</section>;
+  return (
+    <section className="dark:bg-boxdark-2 dark:text-bodydark">
+      {children}
+    </section>
+  );
 }
