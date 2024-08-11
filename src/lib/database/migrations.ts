@@ -1,8 +1,8 @@
-import { openDb } from "./database";
+import getDatabase from "./config";
 
 async function migrate() {
   console.log("run Database");
-  const db = await openDb();
+  const db = await getDatabase();
 
   await db.run(
     `CREATE TABLE IF NOT EXISTS tags (
@@ -110,7 +110,6 @@ async function migrate() {
     },
   );
 
-  // Insert data to users table using email admin@gmail.com and password admin123 hashed using bcrypt
   await db.run(
     `INSERT INTO users (name, email, password) VALUES ('admin', 'admin@gmail.com', '$2b$10$3Q6Zz9Zz9Zz9Zz9Zz9Zz9O') `,
     (err: Error) => {

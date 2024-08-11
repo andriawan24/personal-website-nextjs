@@ -6,7 +6,7 @@ import sqlite3 from "sqlite3";
 
 const databasePath = path.join(process.cwd(), "personal-website.db");
 
-export async function openDb() {
+export default async function getDatabase() {
   return open({
     filename: databasePath,
     driver: sqlite3.Database,
