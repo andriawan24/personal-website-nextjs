@@ -12,17 +12,3 @@ export async function openDb() {
     driver: sqlite3.Database,
   });
 }
-
-export async function getQuery(query: string): Promise<any> {
-  const db = await openDb();
-  const result = await db.get(query);
-  await db.close();
-  return JSON.stringify(result);
-}
-
-export async function postQuery(query: string, values: any[]): Promise<any> {
-  const db = await openDb();
-  const result = await db.run(query, values);
-  await db.close();
-  return JSON.stringify(result);
-}

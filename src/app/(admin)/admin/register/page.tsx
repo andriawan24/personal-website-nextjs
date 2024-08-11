@@ -8,7 +8,6 @@ export default function AdminRegisterPage() {
   const [state, action] = useFormState(register, undefined);
 
   useEffect(() => {
-    console.log("state", state);
     if (state?.message === "success") {
       window.location.href = "/admin/";
     }
