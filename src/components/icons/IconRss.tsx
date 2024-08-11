@@ -7,6 +7,7 @@ export default function IconRss() {
       height="40"
       viewBox="0 0 40 40"
       fill="none"
+      className="w-8 md:w-10 h-8 md:h-10"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path

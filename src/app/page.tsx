@@ -6,7 +6,10 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <div className="flex flex-col gap-4 px-32 py-12">
+      <div
+        id="recent-projects"
+        className="flex flex-col gap-4 px-4 md:px-32 py-4 md:py-12"
+      >
         <TitleWithLink
           title="Recent Projects"
           link="/projects"
@@ -14,7 +17,10 @@ export default function Home() {
         />
         <RecentProjects />
       </div>
-      <div className="flex flex-col gap-4 px-32 py-12">
+      <div
+        id="recent-posts"
+        className="flex flex-col gap-4 px-4 md:px-32 py-4 md:py-12"
+      >
         <TitleWithLink
           title="Recent Posts"
           link="/blogs"

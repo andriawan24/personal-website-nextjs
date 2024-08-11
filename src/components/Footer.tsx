@@ -27,7 +27,7 @@ const socials: SocialMediaType[] = [
 export default function Footer() {
   return (
     <footer className="flex flex-col gap-3 py-12 justify-center items-center">
-      <div className="flex flex-row items-center justify-center gap-6">
+      <div className="flex flex-row items-center justify-center gap-4 md:gap-6">
         {socials.map((social) => (
           <Link
             key={social.name}
@@ -39,8 +39,8 @@ export default function Footer() {
           </Link>
         ))}
       </div>
-      <p className="font-bold text-sm text-color-text-primary">
-        Copyright ©{new Date().getFullYear()} All Right Reserved 
+      <p className="font-semibold md:font-bold text-xs md:text-sm text-color-text-primary">
+        Copyright ©{new Date().getFullYear()} All Right Reserved
       </p>
     </footer>
   );

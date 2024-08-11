@@ -4,10 +4,9 @@ import React from "react";
 
 export default function Blogs() {
   return (
-    <div className="px-32">
+    <div className="px-4 md:px-32">
       <Breadcrumb title="Blogs" />
-      <div className="flex flex-col gap-12 pt-6 pb-16">
-        <RecentProjects />
+      <div className="flex flex-col gap-12 pt-6 pb-4 md:pb-16">
         <RecentProjects />
         <RecentProjects />
         <RecentProjects />
