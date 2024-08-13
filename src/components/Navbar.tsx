@@ -40,7 +40,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`sticky z-10 top-0 flex flex-row justify-between transition-all duration-200 items-center px-4 md:px-32 ${isScrolled ? "bg-color-background-dark shadow-md" : "py-4"}`}
+      className={`sticky z-10 top-0 flex flex-row justify-between transition-all duration-200 items-center px-4 md:px-32 ${isScrolled ? "bg-color-background-dark shadow-md" : ""}`}
     >
       <Link
         href="/"

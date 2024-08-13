@@ -1,50 +1,45 @@
-"use server";
-
 import { jwtVerify, SignJWT } from "jose";
-import { cache } from "react";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 const secretKey = process.env.SESSION_SECRET;
 const encodedKey = new TextEncoder().encode(secretKey);
 
-export async function createSession(
-  userId: string,
-  name: string,
-  email: string,
-) {
-  const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000); // 7 days
-  const session = await encrypt({
-    userId,
-    name,
-    email,
-    expiresAt: expiresAt.toISOString(),
-  });
-
-  cookies().set("session", session, {
-    expires: expiresAt,
-    httpOnly: true,
-    secure: true,
-    sameSite: "lax",
-    path: "/",
-  });
-}
-
-export const verifySession: () => Promise<{
-  isAuth: boolean;
-  user: any;
-}> = cache(async () => {
-  const cookie = cookies().get("session")?.value;
-  const session = await decrypt(cookie);
-
-  if (!session?.userId) {
+export const sessionHelper = {
+  deleteSession: async () => {
+    cookies().delete("session");
     redirect("/admin/login");
-  }
+  },
+  createSession: async (userId: string, name: string, email: string) => {
+    const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000); // 7 days
+    const session = await encrypt({
+      userId,
+      name,
+      email,
+      expiresAt: expiresAt.toISOString(),
+    });
 
-  return { isAuth: true, user: session };
-});
+    cookies().set("session", session, {
+      expires: expiresAt,
+      httpOnly: true,
+      secure: true,
+      sameSite: "lax",
+      path: "/",
+    });
+  },
+  verifySession: async (): Promise<{ isAuth: boolean; user: any }> => {
+    const cookie = cookies().get("session")?.value;
+    const session = await decrypt(cookie);
 
-export async function encrypt(payload: {
+    if (!session?.userId) {
+      return { isAuth: false, user: undefined };
+    }
+
+    return { isAuth: true, user: session };
+  },
+};
+
+function encrypt(payload: {
   userId: string;
   name: string;
   email: string;
@@ -57,13 +52,13 @@ export async function encrypt(payload: {
     .sign(encodedKey);
 }
 
-export async function decrypt(session: string | undefined = "") {
+async function decrypt(session: string | undefined = "") {
   try {
     const { payload } = await jwtVerify(session, encodedKey, {
       algorithms: ["HS256"],
     });
     return payload;
   } catch (error) {
-    console.log("Failed to verify session");
+    return undefined;
   }
 }

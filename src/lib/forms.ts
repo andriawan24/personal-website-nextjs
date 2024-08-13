@@ -9,6 +9,11 @@ export const RegisterFormSchema = z.object({
   password: z.string().min(8).trim(),
 });
 
+export const LoginFormSchema = z.object({
+  email: z.string().email().min(1, "Email cannot be empty").trim(),
+  password: z.string().min(1, "Password cannot be empty").trim(),
+});
+
 export type FormState =
   | {
       errors?: {

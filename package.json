@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "migrate": "ts-node src/lib/migrations.ts"
+    "migrate": "tsx src/lib/database/migrations.ts"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

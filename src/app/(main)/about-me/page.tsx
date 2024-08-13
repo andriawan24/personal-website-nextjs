@@ -11,8 +11,8 @@ export default function About() {
         <Image
           className="rounded-2xl cursor-pointer hover:scale-[0.98] transition-all duration-200 transform md:hover:rotate-3"
           src={"/images/img_profile.webp"}
-          height={450}
-          width={400}
+          height={550}
+          width={500}
           alt={Strings.imageProfileAlt}
         />
         <div className="flex flex-col gap-2 md:gap-6">

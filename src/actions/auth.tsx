@@ -1,9 +1,55 @@
 "use server";
 
-import { FormState, RegisterFormSchema } from "@/lib/forms";
-import { createUser, getUserByEmail } from "@/lib/services/users_service";
-import { createSession } from "@/lib/session";
+import { userService } from "@/lib/database/services/users_service";
+import { FormState, LoginFormSchema, RegisterFormSchema } from "@/lib/forms";
+import { sessionHelper } from "@/lib/session";
 import bcrypt from "bcryptjs";
+
+export async function login(_: FormState, formData: FormData) {
+  const validatedFields = LoginFormSchema.safeParse({
+    email: formData.get("email"),
+    password: formData.get("password"),
+  });
+
+  if (!validatedFields.success) {
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+    };
+  }
+
+  try {
+    const user = await userService.getUserByEmail(validatedFields.data.email);
+    if (!user) {
+      return {
+        errors: {
+          email: ["User not found"],
+        },
+      };
+    }
+
+    const { password } = validatedFields.data;
+    const passwordValid = await bcrypt.compare(password, user.password);
+    if (!passwordValid) {
+      return {
+        errors: {
+          email: ["User not found"],
+        },
+      };
+    }
+
+    await sessionHelper.createSession(
+      user.id?.toString() ?? "",
+      user.name,
+      user.email,
+    );
+
+    return { message: "success" };
+  } catch (error: any) {
+    return {
+      message: "Failed to login " + error.message,
+    };
+  }
+}
 
 /**
  * Registers a new user.
@@ -26,8 +72,7 @@ export async function register(_: FormState, formData: FormData) {
   }
 
   try {
-    // Check if user already exists
-    const user = await getUserByEmail(validatedFields.data.email);
+    const user = await userService.getUserByEmail(validatedFields.data.email);
     if (user) {
       return {
         errors: {
@@ -36,23 +81,28 @@ export async function register(_: FormState, formData: FormData) {
       };
     }
 
-    // Create new user
     const { name, email, password } = validatedFields.data;
     const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = await createUser({ name, email, password: hashedPassword });
+    const newUser = await userService.createUser({
+      name,
+      email,
+      password: hashedPassword,
+    });
 
-    // Signed in user
-    await createSession(
+    await sessionHelper.createSession(
       newUser.id?.toString() ?? "",
       newUser.name,
       newUser.email,
     );
 
-    // Return success message
     return { message: "success" };
   } catch (error: any) {
     return {
       message: "Failed to register " + error.message,
     };
   }
+}
+
+export async function signOut() {
+  sessionHelper.deleteSession();
 }

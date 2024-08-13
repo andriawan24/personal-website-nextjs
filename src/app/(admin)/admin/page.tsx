@@ -1,8 +1,9 @@
-import { verifySession } from "@/lib/session";
+import { sessionHelper } from "@/lib/session";
+import { redirect } from "next/navigation";
 
 export default async function AdminPage() {
-  const user = await verifySession();
-  if (!user) return null;
+  const user = await sessionHelper.verifySession();
+  if (!user.isAuth) redirect("/admin/login");
 
   return (
     <div>
