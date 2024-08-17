@@ -1,11 +1,12 @@
-import { Button } from "@/components/admin/Button";
+import React from "react";
+import { getTags } from "./actions";
 import {
   Card,
   CardContent,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/admin/Card";
+import { Button } from "@/components/admin/Button";
 import {
   Table,
   TableBody,
@@ -14,46 +15,51 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/admin/Table";
-import React from "react";
-import { getProjects } from "./actions";
+import Link from "next/link";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
+} from "@/components/admin/DropdownMenu";
+import { MoreHorizontal } from "lucide-react";
+import TagList from "./tag-list";
 
-export default async function AdminProjects() {
-  const projects = await getProjects();
+export default async function AdminTagsPage() {
+  const tags = await getTags();
 
-  if (!projects.status) {
-    throw new Error(projects.message);
+  if (!tags.status) {
+    throw new Error(tags.message);
   }
 
   return (
     <Card>
       <CardHeader>
         <div className="flex flex-row justify-between items-center">
-          <CardTitle>Projects</CardTitle>
-          <Button variant="default" size="sm">
-            <span>Add Project</span>
-          </Button>
+          <CardTitle>Tags</CardTitle>
+          <Link href="/admin/tags/form">
+            <Button variant="default" size="sm">
+              <span>Add Tag</span>
+            </Button>
+          </Link>
         </div>
       </CardHeader>
       <CardContent>
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Title</TableHead>
-              <TableHead>Github Link</TableHead>
+              <TableHead className="font-semibold">Name</TableHead>
+              <TableHead className="font-semibold">Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {projects.data.map((project) => (
-              <TableRow key={project.id}>
-                <TableCell>{project.title}</TableCell>
-                <TableCell>{project.github_link}</TableCell>
-              </TableRow>
-            ))}
+            <TagList tags={tags.data} />
           </TableBody>
         </Table>
       </CardContent>
-      <CardFooter>
-        {/* <form className="flex items-center w-full justify-between">
+      {/* <CardFooter> */}
+      {/* <form className="flex items-center w-full justify-between">
           <div className="text-xs text-muted-foreground">
             Showing{" "}
             <strong>
@@ -84,7 +90,7 @@ export default async function AdminProjects() {
             </Button>
           </div>
         </form> */}
-      </CardFooter>
+      {/* </CardFooter> */}
     </Card>
   );
 }

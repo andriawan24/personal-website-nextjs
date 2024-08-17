@@ -6,9 +6,9 @@ const secretKey = process.env.SESSION_SECRET;
 const encodedKey = new TextEncoder().encode(secretKey);
 
 export const sessionHelper = {
-  deleteSession: async () => {
+  deleteSession: () => {
     cookies().delete("session");
-    redirect("/admin/login");
+    redirect("/auth/login");
   },
   createSession: async (userId: string, name: string, email: string) => {
     const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000); // 7 days

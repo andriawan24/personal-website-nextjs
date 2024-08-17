@@ -1,12 +1,12 @@
 "use client";
 
-import { register } from "@/actions/auth";
 import Link from "next/link";
 import React, { useEffect } from "react";
 import { useFormState } from "react-dom";
+import { signUp } from "./actions";
 
 export default function AdminRegisterPage() {
-  const [state, action] = useFormState(register, undefined);
+  const [state, action] = useFormState(signUp, undefined);
 
   useEffect(() => {
     if (state?.message === "success") {

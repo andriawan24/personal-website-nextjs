@@ -1,55 +1,9 @@
 "use server";
 
 import { userService } from "@/lib/database/services/users_service";
-import { FormState, LoginFormSchema, RegisterFormSchema } from "@/lib/forms";
+import { FormState, RegisterFormSchema } from "@/lib/forms";
 import { sessionHelper } from "@/lib/session";
-import bcrypt from "bcryptjs";
-
-export async function login(_: FormState, formData: FormData) {
-  const validatedFields = LoginFormSchema.safeParse({
-    email: formData.get("email"),
-    password: formData.get("password"),
-  });
-
-  if (!validatedFields.success) {
-    return {
-      errors: validatedFields.error.flatten().fieldErrors,
-    };
-  }
-
-  try {
-    const user = await userService.getUserByEmail(validatedFields.data.email);
-    if (!user) {
-      return {
-        errors: {
-          email: ["User not found"],
-        },
-      };
-    }
-
-    const { password } = validatedFields.data;
-    const passwordValid = await bcrypt.compare(password, user.password);
-    if (!passwordValid) {
-      return {
-        errors: {
-          email: ["User not found"],
-        },
-      };
-    }
-
-    await sessionHelper.createSession(
-      user.id?.toString() ?? "",
-      user.name,
-      user.email,
-    );
-
-    return { message: "success" };
-  } catch (error: any) {
-    return {
-      message: "Failed to login " + error.message,
-    };
-  }
-}
+import bcrypt from "bcrypt";
 
 /**
  * Registers a new user.
@@ -58,7 +12,7 @@ export async function login(_: FormState, formData: FormData) {
  * @param {FormData} formData - The form data containing the user's name, email, and password.
  * @returns {Promise<{ errors?: Record<string, string[]>, message?: string }>} - A promise that resolves to an object containing either an `errors` property with field validation errors or a `message` property with a success message.
  */
-export async function register(_: FormState, formData: FormData) {
+export async function signUp(_: FormState, formData: FormData) {
   const validatedFields = RegisterFormSchema.safeParse({
     name: formData.get("name"),
     email: formData.get("email"),
@@ -101,8 +55,4 @@ export async function register(_: FormState, formData: FormData) {
       message: "Failed to register " + error.message,
     };
   }
-}
-
-export async function signOut() {
-  sessionHelper.deleteSession();
 }

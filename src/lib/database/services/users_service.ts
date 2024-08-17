@@ -1,5 +1,5 @@
 import getDatabase from "../config";
-import UserTypes from "../models/users_types";
+import UserTypes from "../../models/users_types";
 
 export const userService = {
   getUserByEmail: async (email: string): Promise<UserTypes | undefined> => {

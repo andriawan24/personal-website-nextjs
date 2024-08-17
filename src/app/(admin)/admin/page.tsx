@@ -7,7 +7,7 @@ export default async function AdminPage() {
 
   return (
     <div>
-      <h1>Welcome {user.user.name}</h1>
+      <h1 className="font-bold text-3xl">Welcome {user.user.name}</h1>
     </div>
   );
 }

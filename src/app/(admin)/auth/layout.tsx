@@ -1,4 +1,13 @@
+import { Metadata } from "next";
 import React from "react";
+
+export const metadata: Metadata = {
+  title: "Admin | Naufal Fawwaz Andriawan",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default async function AdminLayout({
   children,
@@ -7,9 +16,7 @@ export default async function AdminLayout({
 }>) {
   return (
     <>
-      <div className="dark:bg-boxdark-2 dark:text-bodydark min-h-screen">
-        {children}
-      </div>
+      <div className="min-h-screen bg-white">{children}</div>
     </>
   );
 }
