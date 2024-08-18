@@ -23,10 +23,10 @@ export const tagsService = {
   },
   update: async (id: number, name: string): Promise<number | undefined> => {
     const database = await getDatabase();
-    const result = await database.run("UPDATE tags SET name = ? WHERE id = ?", [
-      name,
-      id,
-    ]);
+    const result = await database.run(
+      "UPDATE tags SET name = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?",
+      [name, id],
+    );
     await database.close();
     return result.changes;
   },

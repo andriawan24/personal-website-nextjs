@@ -1,5 +1,5 @@
 import React from "react";
-import { getTags } from "./actions";
+import { getStacks } from "./actions";
 import {
   Card,
   CardContent,
@@ -7,37 +7,30 @@ import {
   CardTitle,
 } from "@/components/admin/Card";
 import { Button } from "@/components/admin/Button";
-import {
-  Table,
-  TableBody,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/admin/Table";
 import Link from "next/link";
-import TagList from "./tag-list";
+import StackList from "./stacks-list";
 
 export default async function AdminTagsPage() {
-  const tags = await getTags();
+  const stacks = await getStacks();
 
-  if (!tags.status) {
-    throw new Error(tags.message);
+  if (!stacks.status) {
+    throw new Error(stacks.message);
   }
 
   return (
     <Card>
       <CardHeader>
         <div className="flex flex-row justify-between items-center">
-          <CardTitle>Tags</CardTitle>
-          <Link href="/admin/tags/form">
+          <CardTitle>Stacks</CardTitle>
+          <Link href="/admin/stacks/form">
             <Button variant="default" size="sm">
-              <span>Add Tag</span>
+              <span>Add Stack</span>
             </Button>
           </Link>
         </div>
       </CardHeader>
       <CardContent>
-        <TagList tags={tags.data} />
+        <StackList stacks={stacks.data} />
       </CardContent>
       {/* <CardFooter> */}
       {/* <form className="flex items-center w-full justify-between">

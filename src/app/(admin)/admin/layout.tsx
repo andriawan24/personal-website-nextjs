@@ -26,6 +26,7 @@ import {
   Presentation,
   Settings,
   ShoppingCart,
+  SquareStack,
   Tags,
   Users2,
 } from "lucide-react";
@@ -33,7 +34,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import React, { use } from "react";
+import React from "react";
 
 export const metadata: Metadata = {
   title: "Admin | Naufal Fawwaz Andriawan",
@@ -53,7 +54,7 @@ export default async function AdminLayout({
 
   return (
     <TooltipProvider>
-      <main className="flex min-h-screen w-full flex-col bg-white">
+      <main className="flex min-h-screen flex-col bg-white">
         <DesktopNav />
         <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
           <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
@@ -100,6 +101,10 @@ function DesktopNav() {
 
         <NavItem href="/admin/tags" label="Products">
           <Tags className="h-5 w-5" />
+        </NavItem>
+
+        <NavItem href="/admin/stacks" label="Products">
+          <SquareStack className="h-5 w-5" />
         </NavItem>
       </nav>
       <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-5">

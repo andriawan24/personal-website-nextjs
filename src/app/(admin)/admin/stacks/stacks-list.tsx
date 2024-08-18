@@ -19,14 +19,15 @@ import {
 import * as Toast from "@radix-ui/react-toast";
 import { MoreHorizontal } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
-import { deleteTag } from "./actions";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import { deleteStack } from "./actions";
 
 type Params = {
-  tags: TagsType[];
+  stacks: StackTypes[];
 };
 
-export default function TagList(param: Params) {
+export default function StackList(param: Params) {
   const [openToast, setOpenToast] = useState(false);
   const timerRef = useRef(0);
   const router = useRouter();
@@ -40,25 +41,40 @@ export default function TagList(param: Params) {
       <Table>
         <TableHeader>
           <TableRow>
+            <TableHead className="hidden w-max-sm sm:table-cell">
+              <span className="sr-only">Image</span>
+            </TableHead>
             <TableHead className="font-semibold">Name</TableHead>
-            <TableHead className="font-semibold hidden sm:table-cell">
-              Created At
-            </TableHead>
-            <TableHead className="font-semibold hidden sm:table-cell">
-              Updated At
-            </TableHead>
+            <TableHead className="font-semibold">Created At</TableHead>
+            <TableHead className="font-semibold">Updated At</TableHead>
             <TableHead className="font-semibold">Actions</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {param.tags.map((tag) => (
-            <TableRow key={tag.id}>
-              <TableCell>{tag.name}</TableCell>
+          {param.stacks.map((stack) => (
+            <TableRow key={stack.id}>
               <TableCell className="hidden sm:table-cell">
-                {tag.created_at.split(" ")[1]}, {tag.created_at.split(" ")[0]}
+                <a href={stack.image_url} target="_blank">
+                  <Image
+                    alt="Product image"
+                    className="aspect-square rounded-md object-cover"
+                    height="64"
+                    src={stack.image_url}
+                    width="64"
+                    placeholder="blur"
+                    blurDataURL="/images/img_profile.webp"
+                    onError={(e) => console.log(e)}
+                  />
+                </a>
               </TableCell>
-              <TableCell className="hidden sm:table-cell">
-                {tag.updated_at.split(" ")[1]}, {tag.updated_at.split(" ")[0]}
+              <TableCell>{stack.name}</TableCell>
+              <TableCell>
+                {stack.created_at.split(" ")[1]},{" "}
+                {stack.created_at.split(" ")[0]}
+              </TableCell>
+              <TableCell>
+                {stack.updated_at.split(" ")[1]},{" "}
+                {stack.updated_at.split(" ")[0]}
               </TableCell>
               <TableCell>
                 <DropdownMenu>
@@ -73,7 +89,7 @@ export default function TagList(param: Params) {
                     <DropdownMenuItem className="cursor-pointer hover:bg-gray-200 rounded-md">
                       <a
                         className="w-full h-full"
-                        href={`/admin/tags/form/${tag.id}`}
+                        href={`/admin/stacks/form/${stack.id}`}
                       >
                         Edit
                       </a>
@@ -81,12 +97,11 @@ export default function TagList(param: Params) {
                     <DropdownMenuItem
                       className="cursor-pointer hover:bg-gray-200 rounded-md"
                       onClick={async () => {
-                        const result = await deleteTag(tag.id);
+                        const result = await deleteStack(stack.id);
                         if (result.status) {
                           setOpenToast(false);
                           window.clearTimeout(timerRef.current);
                           timerRef.current = window.setTimeout(() => {
-                            console.log("here");
                             setOpenToast(true);
                             router.refresh();
                           }, 100);
