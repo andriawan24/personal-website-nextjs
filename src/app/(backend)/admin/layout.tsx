@@ -9,12 +9,7 @@ import {
 import { Button } from "@/components/admin/Button";
 import { NavItem } from "@/components/admin/NavItem";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/admin/Sheets";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/admin/Tooltip";
+import { TooltipProvider } from "@/components/admin/Tooltip";
 import { User } from "@/components/admin/User";
 import { sessionHelper } from "@/lib/session";
 import {
@@ -24,7 +19,6 @@ import {
   Package2,
   PanelLeft,
   Presentation,
-  Settings,
   ShoppingCart,
   SquareStack,
   Tags,
@@ -106,20 +100,6 @@ function DesktopNav() {
         <NavItem href="/admin/stacks" label="Products">
           <SquareStack className="h-5 w-5" />
         </NavItem>
-      </nav>
-      <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-5">
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Link
-              href="#"
-              className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-            >
-              <Settings className="h-5 w-5" />
-              <span className="sr-only">Settings</span>
-            </Link>
-          </TooltipTrigger>
-          <TooltipContent side="right">Settings</TooltipContent>
-        </Tooltip>
       </nav>
     </aside>
   );

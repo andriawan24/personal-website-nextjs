@@ -11,7 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "./DropdownMenu";
 import { Button } from "./Button";
-import { signOut } from "@/app/(admin)/admin/actions";
+import { signOut } from "@/app/(backend)/admin/actions";
 
 export async function User({ user }: { user: any }) {
   return (
