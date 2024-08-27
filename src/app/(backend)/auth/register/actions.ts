@@ -3,7 +3,7 @@
 import { userService } from "@/lib/database/services/users_service";
 import { FormState, RegisterFormSchema } from "@/lib/forms";
 import { sessionHelper } from "@/lib/session";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 
 /**
  * Registers a new user.

@@ -8,5 +8,4 @@ interface ProjectTypes {
   development_start_date: string;
   roles: string;
   created_at: string;
-  tags_name: string;
 }
