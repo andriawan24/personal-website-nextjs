@@ -19,10 +19,11 @@ export const projectService = {
   createProject: async (project: ProjectBodyTypes) => {
     const database = await getDatabase();
     const result = await database.run(
-      "INSERT INTO projects (title, description, image, github_link, demo_link, development_start_date, roles) VALUES (?, ?, ?, ?, ?, ?, ?)",
+      "INSERT INTO projects (title, description, thumbnail_image, cover_image, github_link, demo_link, development_start_date, roles) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
       project.title,
       project.description,
-      project.image,
+      project.thumbnail_image,
+      project.cover_image,
       project.github_link,
       project.demo_link,
       project.development_start_date,

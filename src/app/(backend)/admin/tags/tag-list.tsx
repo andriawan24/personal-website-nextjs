@@ -86,7 +86,6 @@ export default function TagList(param: Params) {
                           setOpenToast(false);
                           window.clearTimeout(timerRef.current);
                           timerRef.current = window.setTimeout(() => {
-                            console.log("here");
                             setOpenToast(true);
                             router.refresh();
                           }, 100);

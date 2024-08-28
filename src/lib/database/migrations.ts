@@ -19,11 +19,12 @@ async function migrate() {
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       title TEXT NOT NULL,
       description TEXT NOT NULL,
-      image TEXT NOT NULL,
+      cover_image TEXT NOT NULL,
+      thumbnail_image TEXT NOT NULL,
       github_link TEXT NOT NULL,
       demo_link TEXT NOT NULL,
       development_start_date TEXT NOT NULL,
-      roles TEXT NOT NULL,  -- Fixed roles definition
+      roles TEXT NOT NULL,
       created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
       updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
     )`);
@@ -98,8 +99,8 @@ async function migrate() {
     VALUES ('Mobile Development'), ('Web Development')`);
 
   await db.run(`
-    INSERT INTO projects (title, description, image, github_link, demo_link, development_start_date, roles)
-    VALUES ('Test', 'Test 123', 'test', 'https://github.com/andriawan24', 'https://google.com', '2020-01-02', 'Developers')`);
+    INSERT INTO projects (title, description, cover_image, thumbnail_image, github_link, demo_link, development_start_date, roles)
+    VALUES ('Test', 'Test 123', 'test', 'test', 'https://github.com/andriawan24', 'https://google.com', '2020-01-02', 'Developers')`);
 
   // Seed project_overviews
   await db.run(`

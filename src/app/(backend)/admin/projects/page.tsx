@@ -47,22 +47,7 @@ export default async function AdminProjects() {
         </div>
       </CardHeader>
       <CardContent>
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Title</TableHead>
-              <TableHead>Live Production Link</TableHead>
-              <TableHead>Github Link</TableHead>
-              <TableHead>Roles</TableHead>
-              <TableHead>Actions</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {projects.data.map((project) => (
-              <ProjectList key={project.id} project={project} />
-            ))}
-          </TableBody>
-        </Table>
+        <ProjectList projects={projects.data} />
       </CardContent>
       {/* <CardFooter> */}
       {/* <form className="flex items-center w-full justify-between">

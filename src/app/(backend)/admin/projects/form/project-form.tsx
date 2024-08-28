@@ -11,20 +11,28 @@ import {
   Message,
   Submit,
 } from "@radix-ui/react-form";
-import { TextArea } from "@radix-ui/themes";
 import Image from "next/image";
 import { createProject } from "../actions";
 
 export default function ProjectForm() {
   const [state, action] = useFormState(createProject, undefined);
   const router = useRouter();
-  const [selectedImage, setSelectedImage] = useState<File | undefined>(
+  const [selectedThumbnailImage, setSelectedThumbnailImage] = useState<
+    File | undefined
+  >(undefined);
+  const [selectedFullImage, setSelectedFullImage] = useState<File | undefined>(
     undefined,
   );
 
-  const onImageChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const onFullImageChanged = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
-      setSelectedImage(e.target.files[0]);
+      setSelectedFullImage(e.target.files[0]);
+    }
+  };
+
+  const onThumbnailImageChanged = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setSelectedThumbnailImage(e.target.files[0]);
     }
   };
 
@@ -131,13 +139,13 @@ export default function ProjectForm() {
             )}
           </Field>
 
-          <Field name="image" className="mt-4 flex flex-col">
+          <Field name="full_image" className="mt-4 flex flex-col">
             <Label className="text-lg font-bold text-color-background-dark">
-              Project Logo
+              Full Image
             </Label>
-            {selectedImage && (
+            {selectedFullImage && (
               <Image
-                src={URL.createObjectURL(selectedImage)}
+                src={URL.createObjectURL(selectedFullImage)}
                 width={500}
                 height={500}
                 className="w-64 h-64 object-cover rounded-sm"
@@ -150,11 +158,39 @@ export default function ProjectForm() {
               type="file"
               placeholder="Choose an image"
               accept="image/*"
-              onChange={onImageChange}
+              onChange={onFullImageChanged}
             />
-            {state?.errors?.image && (
+            {state?.errors?.full_image && (
               <Message className="text-red-600 font-semibold text-sm mt-1">
-                {state.errors.image}
+                {state.errors.full_image}
+              </Message>
+            )}
+          </Field>
+
+          <Field name="thumbnail_image" className="mt-4 flex flex-col">
+            <Label className="text-lg font-bold text-color-background-dark">
+              Thumbnail Image
+            </Label>
+            {selectedThumbnailImage && (
+              <Image
+                src={URL.createObjectURL(selectedThumbnailImage)}
+                width={500}
+                height={500}
+                className="w-64 h-64 object-cover rounded-sm"
+                loading="lazy"
+                alt="Preview image for the stack"
+              />
+            )}
+            <Control
+              className="mt-2 w-full bg-color-background-button-dark text-white font-medium rounded-md file:cursor-pointer file:bg-color-background-dark file:font-semibold file:text-white file:px-3 file:py-2 file:rounded-md file:border-none"
+              type="file"
+              placeholder="Choose an image"
+              accept="image/*"
+              onChange={onThumbnailImageChanged}
+            />
+            {state?.errors?.thumbnail_image && (
+              <Message className="text-red-600 font-semibold text-sm mt-1">
+                {state.errors.thumbnail_image}
               </Message>
             )}
           </Field>
@@ -162,11 +198,12 @@ export default function ProjectForm() {
         <div className="w-1/3"></div>
       </div>
 
-      {/* {state?.message && (
+      {state?.message && (
         <h3 className="text-red-600 font-semibold text-sm mt-4">
           {state.message}
         </h3>
-      )} */}
+      )}
+
       <Submit className="mt-4 px-12 py-2 bg-color-background-card-dark text-white rounded-md">
         Save
       </Submit>

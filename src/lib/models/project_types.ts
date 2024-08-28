@@ -2,7 +2,8 @@ interface ProjectTypes {
   id: number;
   title: string;
   description: string;
-  image: string;
+  cover_image: string;
+  thumbnail_image: string;
   github_link: string;
   demo_link: string;
   development_start_date: string;
@@ -13,7 +14,8 @@ interface ProjectTypes {
 interface ProjectBodyTypes {
   title: string;
   description: string;
-  image: string;
+  cover_image: string;
+  thumbnail_image: string;
   github_link: string;
   demo_link: string;
   development_start_date: string;

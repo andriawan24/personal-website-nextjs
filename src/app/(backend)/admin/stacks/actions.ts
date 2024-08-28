@@ -28,7 +28,6 @@ type FormState =
 export async function getStacks(): Promise<BaseResponse<any>> {
   try {
     const stacks = await stackService.get();
-    console.log(stacks);
     return {
       status: true,
       message: "Success get stacks",
@@ -94,7 +93,6 @@ export async function createStacks(_: FormState, formData: FormData) {
 
     return { message: "success" };
   } catch (error: any) {
-    console.log(error);
     return {
       message: "Failed to upload " + error,
     };
