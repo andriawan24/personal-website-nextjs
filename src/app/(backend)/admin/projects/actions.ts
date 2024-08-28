@@ -3,6 +3,9 @@
 import { projectService } from "@/lib/database/services/projects_service";
 import { z } from "zod";
 import ProjectForm from "./form/project-form";
+import { unlink, writeFile } from "fs/promises";
+import path from "path";
+import sharp from "sharp";
 
 const ProjectFormSchema = z.object({
   title: z.string().min(1, "Title cannot be empty"),
@@ -61,7 +64,59 @@ export async function createProject(_: FormState, formData: FormData) {
     };
   }
 
-  return {
-    message: "success",
-  };
+  try {
+    const file = validatedFields.data.image;
+    const filename = Date.now() + "_" + file.name.replaceAll(" ", "_");
+    const buffer = Buffer.from(await file.arrayBuffer());
+    const compressedBuffer = await sharp(buffer)
+      .resize({
+        width: 512,
+        height: 512,
+      })
+      .toBuffer();
+
+    await writeFile(
+      path.join(process.cwd(), "public/images/" + filename),
+      compressedBuffer,
+    );
+
+    await projectService.createProject({
+      title: validatedFields.data.title,
+      description: validatedFields.data.description,
+      image: "/images/" + filename,
+      github_link: validatedFields.data.github_link,
+      demo_link: validatedFields.data.demo_link,
+      development_start_date: validatedFields.data.development_date,
+      roles: validatedFields.data.roles,
+    });
+
+    return {
+      message: "success",
+    };
+  } catch (error: any) {
+    return {
+      message: "Failed to upload " + error,
+    };
+  }
+}
+
+export async function deleteProject(id: number) {
+  try {
+    const stack = await projectService.getProject(id);
+
+    await projectService.delete(id);
+    await unlink(path.join(process.cwd(), "public", stack?.image ?? ""));
+
+    return {
+      status: true,
+      message: "Success delete stack",
+      data: stack,
+    };
+  } catch (e: any) {
+    return {
+      status: false,
+      message: e.message,
+      data: undefined,
+    };
+  }
 }

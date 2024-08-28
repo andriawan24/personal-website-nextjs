@@ -9,3 +9,13 @@ interface ProjectTypes {
   roles: string;
   created_at: string;
 }
+
+interface ProjectBodyTypes {
+  title: string;
+  description: string;
+  image: string;
+  github_link: string;
+  demo_link: string;
+  development_start_date: string;
+  roles: string;
+}

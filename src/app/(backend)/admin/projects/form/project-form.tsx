@@ -28,12 +28,12 @@ export default function ProjectForm() {
     }
   };
 
-  // useEffect(() => {
-  //   if (state?.message == "success") {
-  //     router.replace("/admin/tags");
-  //     router.refresh();
-  //   }
-  // }, [state, router]);
+  useEffect(() => {
+    if (state?.message == "success") {
+      router.replace("/admin/projects");
+      router.refresh();
+    }
+  }, [state, router]);
 
   return (
     <Form action={action} className="w-full">
