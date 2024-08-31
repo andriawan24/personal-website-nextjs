@@ -36,4 +36,13 @@ export const tagsService = {
     await database.close();
     return result.changes;
   },
+  getProjectTags: async (projectId: number): Promise<TagsType[]> => {
+    const database = await getDatabase();
+    const result = await database.all(
+      "SELECT tags.* FROM project_tags INNER JOIN tags ON tags.id = project_tags.tags_id WHERE projects_id = ?",
+      [projectId],
+    );
+    await database.close();
+    return result as TagsType[];
+  },
 };

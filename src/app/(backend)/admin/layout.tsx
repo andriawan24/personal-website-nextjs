@@ -11,6 +11,7 @@ import { NavItem } from "@/components/admin/NavItem";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/admin/Sheets";
 import { TooltipProvider } from "@/components/admin/Tooltip";
 import { User } from "@/components/admin/User";
+import PrelineScript from "@/components/preline-script";
 import { sessionHelper } from "@/lib/session";
 import {
   Home,
@@ -28,6 +29,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import Script from "next/script";
 import React from "react";
 
 export const metadata: Metadata = {
@@ -63,6 +65,7 @@ export default async function AdminLayout({
           </main>
         </div>
       </main>
+      <PrelineScript />
     </TooltipProvider>
   );
 }
