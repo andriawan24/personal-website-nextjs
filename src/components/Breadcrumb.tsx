@@ -3,9 +3,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
-import IconChevronRight from "./icons/IconChevronRight";
+import IconChevronRight from "./icons/icon-chevron-right";
 import { capitalize } from "@/utils/helper";
-import Pill from "./views/Pill";
+import Pill from "./views/pill";
 
 export default function Breadcrumb({
   title,

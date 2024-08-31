@@ -1,4 +1,4 @@
-import Breadcrumb from "@/components/Breadcrumb";
+import Breadcrumb from "@/components/breadcrumb";
 import { Strings } from "@/utils/strings";
 import Image from "next/image";
 import React from "react";

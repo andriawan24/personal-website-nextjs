@@ -32,6 +32,24 @@ export const projectService = {
     await database.close();
     return result.lastID;
   },
+  updateProject: async (project: ProjectBodyTypes) => {
+    console.log(project);
+    const database = await getDatabase();
+    const result = await database.run(
+      "UPDATE projects SET title = ?, description = ?, thumbnail_image = ?, cover_image = ?, github_link = ?, demo_link = ?, development_start_date = ?, roles = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?",
+      project.title,
+      project.description,
+      project.thumbnail_image,
+      project.cover_image,
+      project.github_link,
+      project.demo_link,
+      project.development_start_date,
+      project.roles,
+      project.id,
+    );
+    await database.close();
+    return result.lastID;
+  },
   delete: async (id: number): Promise<number | undefined> => {
     const database = await getDatabase();
     const result = await database.run("DELETE FROM projects WHERE id = ?", [

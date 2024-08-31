@@ -1,11 +1,11 @@
 import Link from "next/link";
 import React from "react";
-import IconArrowUpRight from "./icons/IconArrowUpRight";
-import IconEmail from "./icons/IconEmail";
 import Image from "next/image";
 import { Strings } from "@/utils/strings";
+import IconArrowUpRight from "@/components/icons/icon-arrow-up-right";
+import IconEmail from "@/components/icons/icon-email";
 
-export default function Hero() {
+export default function HeroLanding() {
   return (
     <div className="flex flex-row items-center gap-28 py-4 md:py-20 px-4 md:px-32">
       <div>

@@ -1,5 +1,4 @@
 import React from "react";
-import { getTag } from "../../actions";
 import { notFound } from "next/navigation";
 import {
   Card,
@@ -7,7 +6,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/admin/Card";
-import TagForm from "./tag-form";
+import { getProject } from "../../actions";
+import ProjectForm from "./project-form";
 
 type Params = {
   params: {
@@ -16,23 +16,23 @@ type Params = {
 };
 
 export default async function AdminTagsEdit({ params }: Params) {
-  const tag = await getTag(params.id);
+  const project = await getProject(params.id);
 
-  if (!tag.status) {
-    throw Error(tag.message);
+  if (!project.status) {
+    throw Error(project.message);
   }
 
-  if (!tag.data) {
+  if (!project.data) {
     notFound();
   }
 
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Update Tag</CardTitle>
+        <CardTitle>Update Project</CardTitle>
       </CardHeader>
       <CardContent>
-        <TagForm value={tag.data.name} id={tag.data.id} />
+        <ProjectForm project={project.data} />
       </CardContent>
     </Card>
   );

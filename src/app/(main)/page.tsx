@@ -1,11 +1,11 @@
-import Hero from "@/components/HeroLanding";
-import RecentProjects from "@/components/RecentProjects";
-import TitleWithLink from "@/components/views/TitleWithLink";
+import TitleWithLink from "@/components/views/title-with-link";
+import RecentProjects from "./recent-projects";
+import HeroLanding from "./hero-landing";
 
 export default function HomePage() {
   return (
     <main>
-      <Hero />
+      <HeroLanding />
       <div
         id="recent-projects"
         className="flex flex-col gap-4 px-4 md:px-32 py-4 md:py-12"

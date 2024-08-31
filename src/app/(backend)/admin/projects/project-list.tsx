@@ -21,6 +21,7 @@ import { useRouter } from "next/navigation";
 import React, { useRef, useState } from "react";
 import { deleteProject } from "./actions";
 import * as Toast from "@radix-ui/react-toast";
+import { ThickDividerHorizontalIcon } from "@radix-ui/themes";
 
 export default function ProjectList({
   projects,
@@ -75,6 +76,15 @@ export default function ProjectList({
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
+                    <DropdownMenuLabel>Properties</DropdownMenuLabel>
+                    <DropdownMenuItem className="cursor-pointer hover:bg-gray-200 rounded-md">
+                      <a
+                        className="w-full h-full"
+                        href={`/admin/projects/form/${project.id}/tags`}
+                      >
+                        Project Tags
+                      </a>
+                    </DropdownMenuItem>
                     <DropdownMenuLabel>Actions</DropdownMenuLabel>
                     <DropdownMenuItem className="cursor-pointer hover:bg-gray-200 rounded-md">
                       <a

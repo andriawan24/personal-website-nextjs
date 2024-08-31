@@ -1,10 +1,9 @@
 import { SocialMediaType } from "@/utils/types";
 import React from "react";
-import IconGithub from "./icons/IconGithub";
-import Image from "next/image";
+import IconGithub from "./icons/icon-github";
 import Link from "next/link";
-import IconLinkedin from "./icons/IconLinkedin";
-import IconRss from "./icons/IconRss";
+import IconLinkedin from "./icons/icon-linkedin";
+import IconRss from "./icons/icon-rss";
 
 const socials: SocialMediaType[] = [
   {

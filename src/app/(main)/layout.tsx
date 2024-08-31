@@ -1,5 +1,5 @@
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
+import Footer from "@/components/footer";
+import Navbar from "@/components/navbar";
 import { PageConfig } from "@/utils/constants";
 import { Metadata } from "next";
 import React from "react";

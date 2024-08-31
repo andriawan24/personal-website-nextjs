@@ -1,10 +1,14 @@
 import Image from "next/image";
 import React from "react";
-import Pill from "./views/Pill";
 import Link from "next/link";
+import Pill from "@/components/views/pill";
 
 export default async function RecentProjects() {
   const response = await fetch(`${process.env.HOST_URL}/api/projects`);
+  if (!response.ok) {
+    throw new Error(await response.text());
+  }
+
   const projects = await response.json();
 
   return (
@@ -19,7 +23,7 @@ export default async function RecentProjects() {
           >
             <Image
               className="w-full h-48 object-cover rounded-t-lg"
-              src={`${project.image}`}
+              src={`${project.thumbnail_image}`}
               width={700}
               height={600}
               loading="lazy"

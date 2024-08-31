@@ -137,25 +137,28 @@ export async function updateStack(_: FormState, formData: FormData) {
     let finalFilename = stack?.image_url ?? "";
 
     if (validatedFields.data.image) {
-      console.log("Go to image upload");
       const file = validatedFields.data.image;
-      const filename = Date.now() + "_" + file.name.replaceAll(" ", "_");
-      const buffer = Buffer.from(await file.arrayBuffer());
-      const compressedBuffer = await sharp(buffer)
-        .resize({
-          width: 512,
-          height: 512,
-        })
-        .toBuffer();
+      if (file.size > 0) {
+        const filename = Date.now() + "_" + file.name.replaceAll(" ", "_");
+        const buffer = Buffer.from(await file.arrayBuffer());
+        const compressedBuffer = await sharp(buffer)
+          .resize({
+            width: 512,
+            height: 512,
+          })
+          .toBuffer();
 
-      await writeFile(
-        path.join(process.cwd(), "public/images/" + filename),
-        compressedBuffer,
-      );
+        await writeFile(
+          path.join(process.cwd(), "public/images/" + filename),
+          compressedBuffer,
+        );
 
-      await unlink(path.join(process.cwd(), "public", stack?.image_url ?? ""));
+        await unlink(
+          path.join(process.cwd(), "public", stack?.image_url ?? ""),
+        );
 
-      finalFilename = "/images/" + filename;
+        finalFilename = "/images/" + filename;
+      }
     }
 
     await stackService.update(
