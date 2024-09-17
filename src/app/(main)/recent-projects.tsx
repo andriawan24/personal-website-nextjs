@@ -1,9 +1,17 @@
+import Pill from "@/components/views/pill";
+import { ProjectModel } from "@/data/models/project_model";
+import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
-export default async function RecentProjects() {
+interface Props {
+  allProjects: ProjectModel[];
+}
+
+export default function RecentProjects(props: Props) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-      {/* {projects.data.map((project: ProjectTypes) => {
+      {props.allProjects.map((project) => {
         return (
           <Link
             key={project.id}
@@ -13,7 +21,7 @@ export default async function RecentProjects() {
           >
             <Image
               className="w-full h-48 object-cover rounded-t-lg"
-              src={`${project.thumbnail_image}`}
+              src={`https://picsum.photos/200/300`}
               width={700}
               height={600}
               loading="lazy"
@@ -21,25 +29,25 @@ export default async function RecentProjects() {
             />
             <div className="bg-color-background-card-dark rounded-b-lg p-4">
               <h5 className="text-lg md:text-xl font-bold text-color-text-primary leading-140">
-                Pegipegi
+                {project.title}
               </h5>
               <p className="leading-140 text-color-text-primary mt-2 md:mt-6 line-clamp-4">
-                PT Go Online Destinations atau Pegipegi merupakan Online Travel
-                Agent (OTA) yang menyediakan layanan perjalanan seperti hotel,
-                tiket pesawat, tiket kereta, hotel, dan juga yang lainnya. Lorem
-                ipsum dolor sit amet, consectetur adipisicing elit. Veniam minus
-                animi ipsa aperiam tempora incidunt sint, quae modi obcaecati
-                voluptatum excepturi commodi id? Incidunt dicta placeat
-                architecto ad tenetur corrupti.
+                {project.description}
               </p>
-              <div className="flex flex-row flex-wrap items-center mt-6 gap-2">
-                <Pill text="Android" />
-                <Pill text="+2" />
-              </div>
+              {project.tags.length > 0 && (
+                <>
+                  <div className="flex flex-row flex-wrap items-center mt-6 gap-2">
+                    <Pill text={project.tags[0]} />
+                    {project.tags.length > 1 && (
+                      <Pill text={`+${project.tags.length - 1}`} />
+                    )}
+                  </div>
+                </>
+              )}
             </div>
           </Link>
         );
-      })} */}
+      })}
     </div>
   );
 }
