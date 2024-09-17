@@ -1,11 +1,14 @@
 "use server";
 
 import { userService } from "@/lib/database/services/users_service";
-import { FormState, LoginFormSchema } from "@/lib/forms";
+import {
+  AuthFormState,
+  LoginFormSchema,
+} from "@/lib/forms/authentication_form";
 import { sessionHelper } from "@/lib/session";
 import bcrypt from "bcryptjs";
 
-export async function signIn(_: FormState, formData: FormData) {
+export async function signIn(_: AuthFormState, formData: FormData) {
   const validatedFields = LoginFormSchema.safeParse({
     email: formData.get("email"),
     password: formData.get("password"),

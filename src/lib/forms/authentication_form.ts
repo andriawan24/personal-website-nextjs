@@ -14,7 +14,7 @@ export const LoginFormSchema = z.object({
   password: z.string().min(1, "Password cannot be empty").trim(),
 });
 
-export type FormState =
+export type AuthFormState =
   | {
       errors?: {
         name?: string[];

@@ -1,7 +1,10 @@
 "use server";
 
 import { userService } from "@/lib/database/services/users_service";
-import { FormState, RegisterFormSchema } from "@/lib/forms";
+import {
+  AuthFormState,
+  RegisterFormSchema,
+} from "@/lib/forms/authentication_form";
 import { sessionHelper } from "@/lib/session";
 import bcrypt from "bcryptjs";
 
@@ -12,7 +15,7 @@ import bcrypt from "bcryptjs";
  * @param {FormData} formData - The form data containing the user's name, email, and password.
  * @returns {Promise<{ errors?: Record<string, string[]>, message?: string }>} - A promise that resolves to an object containing either an `errors` property with field validation errors or a `message` property with a success message.
  */
-export async function signUp(_: FormState, formData: FormData) {
+export async function signUp(_: AuthFormState, formData: FormData) {
   const validatedFields = RegisterFormSchema.safeParse({
     name: formData.get("name"),
     email: formData.get("email"),
