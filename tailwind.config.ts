@@ -24,6 +24,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), require("preline/plugin")],
+  plugins: [],
 };
 export default config;
