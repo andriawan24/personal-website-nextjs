@@ -13,13 +13,17 @@ import bcrypt from "bcryptjs";
  *
  * @param {FormState} _ - The form state (unused).
  * @param {FormData} formData - The form data containing the user's name, email, and password.
- * @returns {Promise<{ errors?: Record<string, string[]>, message?: string }>} - A promise that resolves to an object containing either an `errors` property with field validation errors or a `message` property with a success message.
+ * @returns {Promise<AuthFormState>} - A promise that resolves to an object containing either an `errors` property with field validation errors or a `message` property with a success message.
  */
-export async function signUp(_: AuthFormState, formData: FormData) {
+export async function signUp(
+  _: AuthFormState,
+  formData: FormData,
+): Promise<AuthFormState> {
   const validatedFields = RegisterFormSchema.safeParse({
     name: formData.get("name"),
     email: formData.get("email"),
     password: formData.get("password"),
+    keywords: formData.get("keywords"),
   });
 
   if (!validatedFields.success) {
@@ -29,6 +33,14 @@ export async function signUp(_: AuthFormState, formData: FormData) {
   }
 
   try {
+    if (validatedFields.data.keywords != process.env.KEYWORD_SIGNUP) {
+      return {
+        errors: {
+          keywords: ["Keywords is wrong"],
+        },
+      };
+    }
+
     const user = await userService.getUserByEmail(validatedFields.data.email);
     if (user) {
       return {

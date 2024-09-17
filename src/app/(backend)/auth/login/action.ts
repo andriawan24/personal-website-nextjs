@@ -8,7 +8,17 @@ import {
 import { sessionHelper } from "@/lib/session";
 import bcrypt from "bcryptjs";
 
-export async function signIn(_: AuthFormState, formData: FormData) {
+/**
+ * Sign in a user with the provided authentication form data.
+ *
+ * @param {AuthFormState} _ - The current authentication form state.
+ * @param {FormData} formData - The form data containing the user's email and password.
+ * @returns {Promise<AuthFormState>} - A promise that resolves to an object containing either the errors encountered during sign-in or a success message.
+ */
+export async function signIn(
+  _: AuthFormState,
+  formData: FormData,
+): Promise<AuthFormState> {
   const validatedFields = LoginFormSchema.safeParse({
     email: formData.get("email"),
     password: formData.get("password"),
