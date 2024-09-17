@@ -1,19 +1,9 @@
-import Image from "next/image";
 import React from "react";
-import Link from "next/link";
-import Pill from "@/components/views/pill";
 
 export default async function RecentProjects() {
-  const response = await fetch(`${process.env.HOST_URL}/api/projects`);
-  if (!response.ok) {
-    throw new Error(await response.text());
-  }
-
-  const projects = await response.json();
-
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-      {projects.data.map((project: ProjectTypes) => {
+      {/* {projects.data.map((project: ProjectTypes) => {
         return (
           <Link
             key={project.id}
@@ -49,7 +39,7 @@ export default async function RecentProjects() {
             </div>
           </Link>
         );
-      })}
+      })} */}
     </div>
   );
 }
