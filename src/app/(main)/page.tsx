@@ -1,6 +1,11 @@
 import TitleWithLink from "@/components/views/title-with-link";
 import RecentProjects from "./recent-projects";
 import HeroLanding from "./hero-landing";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Home",
+};
 
 export default function HomePage() {
   return (

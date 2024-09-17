@@ -2,13 +2,14 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { PageConfig } from "@/utils/constants";
 import { Metadata } from "next";
-import Navbar from "@/components/navbar";
-import Footer from "@/components/footer";
 
 const plusJakartaSans = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: PageConfig.title,
+  title: {
+    template: `%s | ${PageConfig.title}`,
+    default: PageConfig.title,
+  },
   description: PageConfig.description,
   authors: {
     name: PageConfig.author,

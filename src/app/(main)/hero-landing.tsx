@@ -12,7 +12,7 @@ export default function HeroLanding() {
         <h1 className="text-4xl md:text-5xl leading-140 font-bold text-color-text-primary">
           Naufal Fawwaz Andriawan
         </h1>
-        <h3 className="text-xl md:text-2xl mt-2 md:mt-0 leading-140 font-semibold text-color-text-primary">
+        <h3 className="text-xl md:text-2xl mt-2 md:mt-1 leading-140 font-semibold text-color-text-primary">
           Software Engineer
         </h3>
         <p className="text-color-text-secondary leading-140 text-xl md:text-2xl mt-4">

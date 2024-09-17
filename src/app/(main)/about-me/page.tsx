@@ -1,7 +1,12 @@
 import Breadcrumb from "@/components/breadcrumb";
 import { Strings } from "@/utils/strings";
+import { Metadata } from "next";
 import Image from "next/image";
 import React from "react";
+
+export const metadata: Metadata = {
+  title: "About Me",
+};
 
 export default function About() {
   return (
