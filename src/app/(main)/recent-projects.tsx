@@ -1,22 +1,20 @@
 import Pill from "@/components/views/pill";
-import { ProjectModel } from "@/data/models/project_model";
+import { allProjects } from "contentlayer/generated";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-interface Props {
-  allProjects: ProjectModel[];
-}
+export default function RecentProjects() {
+  const projects = allProjects;
 
-export default function RecentProjects(props: Props) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-      {props.allProjects.map((project) => {
+      {projects.map((project) => {
         return (
           <Link
-            key={project.id}
+            key={project._id}
             target="_blank"
-            href={`${process.env.HOST_URL}/projects/${project.id}`}
+            href={`${process.env.HOST_URL}/projects/${project._id}`}
             className="cursor-pointer transition-all duration-200 hover:opacity-80 hover:scale-[0.99] active:opacity-100"
           >
             <Image
