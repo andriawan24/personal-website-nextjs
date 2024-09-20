@@ -3,6 +3,7 @@ import { Strings } from "@/utils/strings";
 import { Metadata } from "next";
 import Image from "next/image";
 import React from "react";
+import * as motion from "framer-motion/client";
 
 export const metadata: Metadata = {
   title: "About Me",
@@ -10,16 +11,30 @@ export const metadata: Metadata = {
 
 export default function About() {
   return (
-    <div className="px-4 md:px-32">
+    <div className="px-4 md:px-32 overflow-hidden">
       <Breadcrumb title="About Me" />
-      <div className="flex flex-col md:flex-row gap-12 items-center py-8 md:py-16">
-        <Image
-          className="rounded-2xl cursor-pointer hover:scale-[0.98] transition-all duration-200 transform md:hover:rotate-3"
-          src={"/images/img_profile.webp"}
-          height={550}
-          width={500}
-          alt={Strings.imageProfileAlt}
-        />
+      <motion.div
+        className="flex flex-col lg:flex-row gap-12 items-center py-8 md:py-16 overflow-hidden"
+        initial={{ x: 300, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{
+          duration: 0.365,
+          type: "spring",
+          bounce: 0.25,
+          stiffness: 100,
+        }}
+      >
+        <motion.div className="inline-block lg:w-[1500px] lg:h-[550[x]">
+          <Image
+            className="rounded-2xl transition-all duration-200 transform"
+            src={"/images/img_profile.webp"}
+            height={550}
+            width={500}
+            alt={Strings.imageProfileAlt}
+            loading="lazy"
+          />
+        </motion.div>
         <div className="flex flex-col gap-2 md:gap-6">
           <h3 className="text-2xl font-semibold text-color-text-primary leading-140">
             Hello, You can call me Fawwaz
@@ -39,7 +54,7 @@ export default function About() {
             I`m bored.
           </p>
         </div>
-      </div>
+      </motion.div>
       {/* Section Skills */}
       <h3 className="font-bold text-2xl text-color-text-secondary">
         My Skills

@@ -5,7 +5,9 @@ import { MenuType } from "@/utils/types";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
+import { animate, motion, useMotionValueEvent, useScroll } from "framer-motion";
+import classNames from "classnames";
 
 const menus: MenuType[] = [
   {
@@ -22,32 +24,39 @@ const menus: MenuType[] = [
   },
 ];
 
-export default function Navbar() {
+export default function Navbar(): ReactElement {
   const pathname = usePathname();
-  const [isScrolled, setIsScrolled] = useState(false);
+  const { scrollYProgress } = useScroll();
+  const [onTop, setOnTop] = useState(true);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    const prev = scrollYProgress.getPrevious() ?? 0;
+    console.log(prev, latest);
+    if (latest > prev && latest > 0.15) {
+      setOnTop(false);
+    } else {
+      setOnTop(true);
+    }
+  });
 
   return (
-    <header
-      className={`sticky z-10 top-0 flex flex-row justify-between transition-all duration-200 items-center px-4 md:px-32 ${isScrolled ? "bg-color-background-dark shadow-md py-1" : "py-3"}`}
+    <motion.header
+      className={classNames(
+        "sticky z-10 top-0 flex flex-row justify-between items-center px-4 md:px-32 bg-color-background-dark transition-all duration-200 py-1",
+        {
+          "shadow-md": !onTop,
+        },
+        {
+          "shadow-none": onTop,
+        },
+      )}
     >
       <Link
         href="/"
         className="cursor-pointer hover:scale-105 duration-200 transition-all active:scale-100 active:duration-0"
       >
         <Image
-          src={"/images/img_logo.png"}
+          src={"/images/img_logo.webp"}
           width={80}
           height={80}
           alt={Strings.imageLogoAlt}
@@ -68,6 +77,6 @@ export default function Navbar() {
           })}
         </ul>
       </nav>
-    </header>
+    </motion.header>
   );
 }

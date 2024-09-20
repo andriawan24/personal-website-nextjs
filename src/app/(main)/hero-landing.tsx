@@ -46,7 +46,7 @@ export default function HeroLanding() {
       <div className="hidden lg:block flex-none">
         <Image
           className="rounded-full object-cover object-top w-64 h-64 me-12"
-          src={"/images/img_profile.webp"}
+          src={"/images/img_fawwaz.webp"}
           loading="lazy"
           width={500}
           height={500}

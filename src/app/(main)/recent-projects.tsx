@@ -13,7 +13,6 @@ export default function RecentProjects() {
         return (
           <Link
             key={project._id}
-            target="_blank"
             href={`${process.env.HOST_URL}/projects/${project._id}`}
             className="cursor-pointer transition-all duration-200 hover:opacity-80 hover:scale-[0.99] active:opacity-100"
           >
