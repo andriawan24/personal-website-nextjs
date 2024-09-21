@@ -1,4 +1,8 @@
-import { defineDocumentType, makeSource } from "contentlayer/source-files";
+import {
+  defineDocumentType,
+  defineNestedType,
+  makeSource,
+} from "contentlayer/source-files";
 
 export const Project = defineDocumentType(() => ({
   name: "Project",
@@ -20,11 +24,126 @@ export const Project = defineDocumentType(() => ({
       type: "string",
       required: true,
     },
+    thumbnail: {
+      type: "string",
+      required: true,
+    },
+    development_start: {
+      type: "string",
+      required: true,
+    },
+    roles: {
+      type: "string",
+    },
+    links: {
+      type: "list",
+      required: false,
+      default: [],
+      of: defineNestedType(() => ({
+        name: "Link",
+        fields: {
+          title: {
+            type: "string",
+            required: true,
+          },
+          link: {
+            type: "string",
+            required: true,
+          },
+        },
+      })),
+    },
+    languages: {
+      type: "list",
+      of: defineNestedType(() => ({
+        name: "Language",
+        fields: {
+          title: {
+            type: "string",
+            required: true,
+          },
+          link: {
+            type: "string",
+            required: true,
+          },
+          image: {
+            type: "string",
+            required: true,
+          },
+        },
+      })),
+    },
+    frameworks: {
+      type: "list",
+      required: false,
+      default: [],
+      of: defineNestedType(() => ({
+        name: "Framework",
+        fields: {
+          title: {
+            type: "string",
+            required: true,
+          },
+          link: {
+            type: "string",
+            required: true,
+          },
+          image: {
+            type: "string",
+            required: true,
+          },
+        },
+      })),
+    },
+    databases: {
+      type: "list",
+      required: false,
+      default: [],
+      of: defineNestedType(() => ({
+        name: "Database",
+        fields: {
+          title: {
+            type: "string",
+            required: true,
+          },
+          link: {
+            type: "string",
+            required: true,
+          },
+          image: {
+            type: "string",
+            required: true,
+          },
+        },
+      })),
+    },
+    overviews: {
+      type: "list",
+      required: false,
+      default: [],
+      of: defineNestedType(() => ({
+        name: "Overview",
+        fields: {
+          title: {
+            type: "string",
+            required: true,
+          },
+          link: {
+            type: "string",
+            required: true,
+          },
+          image: {
+            type: "string",
+            required: true,
+          },
+        },
+      })),
+    },
   },
   computedFields: {
     url: {
       type: "string",
-      resolve: (project) => `/projects/${project._raw.flattenedPath}`,
+      resolve: (project) => `/${project._raw.flattenedPath}`,
     },
   },
 }));

@@ -18,10 +18,10 @@ export default function RecentProjects() {
           >
             <Image
               className="w-full h-48 object-cover rounded-t-lg"
-              src={`https://picsum.photos/200/300`}
+              src={project.thumbnail}
               width={700}
               height={600}
-              loading="lazy"
+              priority
               alt="This is generated image from lorem picsum"
             />
             <div className="bg-color-background-card-dark rounded-b-lg p-4">

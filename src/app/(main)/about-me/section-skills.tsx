@@ -5,7 +5,7 @@ import React, { ReactElement } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-function SkillCard({ skill }: { skill: Skill }): ReactElement {
+export function SkillCard({ skill }: { skill: Skill }): ReactElement {
   return (
     <motion.a
       layoutId={skill._id}
