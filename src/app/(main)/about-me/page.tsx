@@ -4,12 +4,15 @@ import { Metadata } from "next";
 import Image from "next/image";
 import React from "react";
 import * as motion from "framer-motion/client";
+import { allSkills } from "contentlayer/generated";
 
 export const metadata: Metadata = {
   title: "About Me",
 };
 
 export default function About() {
+  const skills = allSkills.filter((skill) => skill.published);
+
   return (
     <div className="px-4 md:px-32 overflow-hidden">
       <Breadcrumb title="About Me" />
@@ -18,12 +21,6 @@ export default function About() {
         initial={{ x: 300, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{
-          duration: 0.365,
-          type: "spring",
-          bounce: 0.25,
-          stiffness: 100,
-        }}
       >
         <motion.div className="inline-block lg:w-[1500px] lg:h-[550[x]">
           <Image
@@ -60,78 +57,23 @@ export default function About() {
         My Skills
       </h3>
       <div className="grid grid-cols-3 md:flex md:flex-row flex-wrap gap-4 md:gap-6 pt-4 md:pt-6 pb-16">
-        <div className="flex flex-col gap-4 hover:-translate-y-1 duration-200 cursor-pointer transition-all justify-center items-center p-6 bg-color-background-card-dark rounded-lg">
-          <Image
-            className="w-14 h-14"
-            src="/images/img_kotlin.png"
-            width={60}
-            height={60}
-            alt={Strings.imageLogoAlt}
-          />
-          <h6 className="font-semibold text-lg md:text-xl text-color-text-primary">
-            Kotlin
-          </h6>
-        </div>
-        <div className="flex flex-col gap-4 hover:-translate-y-1 duration-200 cursor-pointer transition-all justify-center items-center p-6 bg-color-background-card-dark rounded-lg">
-          <Image
-            className="w-14 h-14"
-            src="/images/img_kotlin.png"
-            width={60}
-            height={60}
-            alt={Strings.imageLogoAlt}
-          />
-          <h6 className="font-semibold text-lg md:text-xl text-color-text-primary">
-            Kotlin
-          </h6>
-        </div>
-        <div className="flex flex-col gap-4 hover:-translate-y-1 duration-200 cursor-pointer transition-all justify-center items-center p-6 bg-color-background-card-dark rounded-lg">
-          <Image
-            className="w-14 h-14"
-            src="/images/img_kotlin.png"
-            width={60}
-            height={60}
-            alt={Strings.imageLogoAlt}
-          />
-          <h6 className="font-semibold text-lg md:text-xl text-color-text-primary">
-            Kotlin
-          </h6>
-        </div>
-        <div className="flex flex-col gap-4 hover:scale-[0.98] active:scale-100 hover:-translate-y-1 duration-200 cursor-pointer transition-all justify-center items-center p-6 bg-color-background-card-dark rounded-lg">
-          <Image
-            className="w-14 h-14"
-            src="/images/img_kotlin.png"
-            width={60}
-            height={60}
-            alt={Strings.imageLogoAlt}
-          />
-          <h6 className="font-semibold text-lg md:text-xl text-color-text-primary">
-            Kotlin
-          </h6>
-        </div>
-        <div className="flex flex-col gap-4 hover:-translate-y-1 duration-200 cursor-pointer transition-all justify-center items-center p-6 bg-color-background-card-dark rounded-lg">
-          <Image
-            className="w-14 h-14"
-            src="/images/img_kotlin.png"
-            width={60}
-            height={60}
-            alt={Strings.imageLogoAlt}
-          />
-          <h6 className="font-semibold text-lg md:text-xl text-color-text-primary">
-            Kotlin
-          </h6>
-        </div>
-        <div className="flex flex-col gap-4 hover:-translate-y-1 duration-200 cursor-pointer transition-all justify-center items-center p-6 bg-color-background-card-dark rounded-lg">
-          <Image
-            className="w-14 h-14"
-            src="/images/img_kotlin.png"
-            width={60}
-            height={60}
-            alt={Strings.imageLogoAlt}
-          />
-          <h6 className="font-semibold text-lg md:text-xl text-color-text-primary">
-            Kotlin
-          </h6>
-        </div>
+        {skills.map((skill) => (
+          <div
+            key={skill._id}
+            className="flex flex-col gap-4 hover:-translate-y-1 duration-200 cursor-pointer transition-all justify-center items-center p-6 bg-color-background-card-dark rounded-lg"
+          >
+            <Image
+              className="w-14 h-14"
+              src={skill.image}
+              width={60}
+              height={60}
+              alt={Strings.imageLogoAlt}
+            />
+            <h6 className="font-semibold text-lg md:text-xl text-color-text-primary">
+              {skill.title}
+            </h6>
+          </div>
+        ))}
       </div>
       {/* Section Experiences */}
       <h3 className="font-bold text-2xl text-color-text-secondary">
