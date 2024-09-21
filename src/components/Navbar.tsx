@@ -31,7 +31,6 @@ export default function Navbar(): ReactElement {
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     const prev = scrollYProgress.getPrevious() ?? 0;
-    console.log(prev, latest);
     if (latest > prev && latest > 0.15) {
       setOnTop(false);
     } else {

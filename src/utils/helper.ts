@@ -7,3 +7,7 @@ export function capitalize(text: String): String {
     })
     .join(" ");
 }
+
+export const getYearFromDate = (dateString: string) => {
+  return new Date(dateString).getFullYear();
+};
