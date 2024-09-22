@@ -15,7 +15,7 @@ export const Strings = {
     Software Engineering major at SMK Negeri 2 Kota Bandung and ended up as an software engineering student at Universitas Pendidikan Indonesia.`,
   aboutMeDescription2: `I\`m currently ${new Date().getFullYear() - 2002} years old, and I live
     in Bandung with my lovely parents and younger sister. My daily
-    activities are studying, coding, and working during the workday and
+    activities are studying and coding during the workday and
     weekends. Sometimes, I play a game or watch my favorite movies when
     I\`m bored.`,
 };
