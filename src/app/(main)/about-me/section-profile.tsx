@@ -10,12 +10,15 @@ export default function SectionProfile() {
     <motion.div
       className="flex flex-col lg:flex-row gap-12 items-center py-8 md:py-16 overflow-hidden"
       variants={{
-        hidden: { x: 300, opacity: 0 },
-        visible: { x: 0, opacity: 1 },
+        hidden: { y: 200, opacity: 0 },
+        visible: { y: 0, opacity: 1 },
       }}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
+      transition={{
+        duration: 0.3,
+      }}
     >
       <motion.div className="inline-block lg:w-[1500px] lg:h-[550[x]">
         <Image

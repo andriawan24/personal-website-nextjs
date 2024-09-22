@@ -39,12 +39,15 @@ export default function SectionSkills() {
   return (
     <motion.div
       variants={{
-        hidden: { x: 300, opacity: 0 },
-        visible: { x: 0, opacity: 1 },
+        hidden: { y: 200, opacity: 0 },
+        visible: { y: 0, opacity: 1 },
       }}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
+      transition={{
+        duration: 0.3,
+      }}
     >
       <h3 className="font-bold text-2xl text-color-text-secondary">
         My Skills
