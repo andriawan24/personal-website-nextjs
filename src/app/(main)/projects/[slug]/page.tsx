@@ -28,7 +28,7 @@ export default function ProjectDetailDetail({
         <Image
           src={project.thumbnail}
           alt="Project Image"
-          className="h-80 w-full object-cover"
+          className="h-96 w-full object-cover"
           width={1920}
           height={1080}
         />

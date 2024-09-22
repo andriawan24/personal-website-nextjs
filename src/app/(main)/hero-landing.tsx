@@ -4,10 +4,23 @@ import Image from "next/image";
 import { Strings } from "@/utils/strings";
 import IconArrowUpRight from "@/components/icons/icon-arrow-up-right";
 import IconEmail from "@/components/icons/icon-email";
+import * as motion from "framer-motion/client";
 
 export default function HeroLanding() {
   return (
-    <div className="flex flex-row items-center gap-28 py-4 md:py-20 px-4 md:px-32">
+    <motion.div
+      variants={{
+        hidden: { y: 200, opacity: 0 },
+        visible: { y: 0, opacity: 1 },
+      }}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      transition={{
+        duration: 0.3,
+      }}
+      className="flex flex-row items-center gap-28 py-4 md:py-20 px-4 md:px-32"
+    >
       <div>
         <h1 className="text-4xl md:text-5xl leading-140 font-bold text-color-text-primary">
           Naufal Fawwaz Andriawan
@@ -53,6 +66,6 @@ export default function HeroLanding() {
           alt={Strings.imageProfileAlt}
         />
       </div>
-    </div>
+    </motion.div>
   );
 }
