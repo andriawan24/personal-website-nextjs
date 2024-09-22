@@ -2,6 +2,7 @@ import TitleWithLink from "@/components/views/title-with-link";
 import RecentProjects from "./recent-projects";
 import HeroLanding from "./hero-landing";
 import { Metadata } from "next";
+import RecentBlogs from "./recent-blogs";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -31,7 +32,7 @@ export default async function HomePage() {
           link="/blogs"
           titleLink="See All Posts"
         />
-        <RecentProjects />
+        <RecentBlogs />
       </div>
     </main>
   );

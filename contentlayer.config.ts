@@ -4,6 +4,45 @@ import {
   makeSource,
 } from "contentlayer/source-files";
 
+export const Blog = defineDocumentType(() => ({
+  name: "Blog",
+  filePathPattern: "./blogs/**/*.mdx",
+  contentType: "mdx",
+  fields: {
+    title: {
+      type: "string",
+      required: true,
+    },
+    link: {
+      type: "string",
+      required: true,
+    },
+    publication: {
+      type: "string",
+      required: true,
+    },
+    publication_logo: {
+      type: "string",
+      required: true,
+    },
+    thumbnail: {
+      type: "string",
+      required: true,
+    },
+    tags: {
+      type: "list",
+      of: {
+        type: "string",
+      },
+      required: true,
+    },
+    description: {
+      type: "string",
+      required: true,
+    },
+  },
+}));
+
 export const Project = defineDocumentType(() => ({
   name: "Project",
   filePathPattern: "./projects/**/*.mdx",
@@ -205,5 +244,5 @@ export const Experience = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: "./src/data",
-  documentTypes: [Project, Skill, Experience],
+  documentTypes: [Project, Skill, Experience, Blog],
 });
