@@ -4,6 +4,7 @@ import IconGithub from "./icons/icon-github";
 import Link from "next/link";
 import IconLinkedin from "./icons/icon-linkedin";
 import IconRss from "./icons/icon-rss";
+import IconMedium from "./icons/icon-medium";
 
 const socials: SocialMediaType[] = [
   {
@@ -17,10 +18,15 @@ const socials: SocialMediaType[] = [
     icon: <IconLinkedin />,
   },
   {
-    name: "RSS",
-    url: "https://localhost:3000/rss.xml",
-    icon: <IconRss />,
+    name: "Medium",
+    url: "https://medium.com/@fawaznaufal23",
+    icon: <IconMedium />,
   },
+  // {
+  //   name: "RSS",
+  //   url: "https://localhost:3000/rss.xml",
+  //   icon: <IconRss />,
+  // },
 ];
 
 export default function Footer() {
