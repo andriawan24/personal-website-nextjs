@@ -39,7 +39,7 @@ export default function BlogItem({ blog }: Props) {
         />
       </div>
       <div className="bg-color-background-card-dark rounded-b-lg p-4">
-        <h5 className="text-lg md:text-xl font-bold text-color-text-primary leading-140 line-clamp-1">
+        <h5 className="text-lg md:text-xl font-bold text-color-text-primary leading-140 line-clamp-2">
           {blog.title}
         </h5>
         <p className="leading-140 text-color-text-primary mt-2 md:mt-6 line-clamp-4">

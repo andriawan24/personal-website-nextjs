@@ -7,7 +7,7 @@ import { allBlogs } from "contentlayer/generated";
 export default function BlogsPage() {
   const blogs = allBlogs;
   return (
-    <div className="px-4 md:px-32">
+    <div className="px-4 md:px-24">
       <Breadcrumb title="Blogs" />
       <motion.div
         variants={{

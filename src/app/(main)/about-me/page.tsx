@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function About() {
   return (
-    <div className="px-4 md:px-32 overflow-hidden">
+    <div className="px-4 md:px-24 overflow-hidden">
       <Breadcrumb title="About Me" />
       <SectionProfile />
       <SectionSkills />

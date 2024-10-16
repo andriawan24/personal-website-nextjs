@@ -19,19 +19,19 @@ export default function HeroLanding() {
       transition={{
         duration: 0.3,
       }}
-      className="flex flex-row items-center gap-28 py-4 md:py-20 px-4 md:px-32"
+      className="flex flex-row items-center gap-10 py-4 md:py-20 px-4 md:px-24"
     >
       <div>
         <h1 className="text-4xl md:text-5xl leading-140 font-bold text-color-text-primary">
           Naufal Fawwaz Andriawan
         </h1>
-        <h3 className="text-xl md:text-2xl pt-2 md:mt-1 leading-140 font-semibold text-color-text-primary">
+        <h3 className="text-md md:text-2xl pt-2 leading-140 font-semibold text-color-text-primary">
           Software Engineer
         </h3>
-        <p className="text-color-text-secondary leading-140 text-xl md:text-2xl mt-4">
-          I`m a software engineer with more 4+ years of experience. My goal is
-          to become a proficient and versatile software engineer and deliver
-          high-quality solutions for various platforms and domains
+        <p className="text-color-text-secondary leading-140 text-md md:text-xl mt-2">
+          I`m a mobile application engineer with more than 3 years of
+          experience. My goal is to become a proficient and versatile mobile
+          application engineer and deliver high-quality solutions for people
         </p>
         <div className="flex flex-row items-center mt-8 gap-2 md:gap-6">
           <Link

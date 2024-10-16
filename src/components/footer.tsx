@@ -38,7 +38,7 @@ export default function Footer() {
           </Link>
         ))}
       </div>
-      <p className="font-semibold md:font-bold text-xs md:text-sm text-color-text-primary">
+      <p className="font-semibold md:font-semibold text-xs md:text-sm text-color-text-primary">
         Copyright ©{new Date().getFullYear()} All Right Reserved
       </p>
     </footer>

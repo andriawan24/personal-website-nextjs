@@ -25,7 +25,7 @@ export default async function HomePage() {
           duration: 0.3,
         }}
         id="recent-projects"
-        className="flex flex-col gap-4 px-4 md:px-32 py-4 md:py-12"
+        className="flex flex-col gap-4 px-4 md:px-24 py-4 md:py-12"
       >
         <TitleWithLink
           title="Recent Projects"
@@ -46,7 +46,7 @@ export default async function HomePage() {
           duration: 0.3,
         }}
         id="recent-posts"
-        className="flex flex-col gap-4 px-4 md:px-32 py-4 md:py-12"
+        className="flex flex-col gap-4 px-4 md:px-24 py-4 md:py-12"
       >
         <TitleWithLink
           title="Recent Posts"
