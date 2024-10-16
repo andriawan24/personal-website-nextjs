@@ -26,7 +26,7 @@ export default function HeroLanding() {
           Naufal Fawwaz Andriawan
         </h1>
         <h3 className="text-md md:text-2xl pt-2 leading-140 font-semibold text-color-text-primary">
-          Software Engineer
+          Mobile Application Engineer
         </h3>
         <p className="text-color-text-secondary leading-140 text-md md:text-xl mt-2">
           I`m a mobile application engineer with more than 3 years of
