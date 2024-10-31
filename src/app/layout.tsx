@@ -2,6 +2,7 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { PageConfig } from "@/utils/constants";
 import { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/react";
 
 const plusJakartaSans = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
@@ -56,6 +57,7 @@ export default function RootLayout({
       <body className={`${plusJakartaSans.className} bg-color-background-dark`}>
         {children}
       </body>
+      <Analytics />
     </html>
   );
 }
