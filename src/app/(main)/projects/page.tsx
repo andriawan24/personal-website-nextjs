@@ -3,6 +3,12 @@ import React from "react";
 import RecentProjects from "../recent-projects";
 import * as motion from "framer-motion/client";
 
+export const metadata: Metadata = {
+  title: "Projects",
+  description:
+    "A place to showcases what am I currently build and what I've done for this several years as a software engineer",
+};
+
 export default function ProjectsPage() {
   return (
     <div className="px-4 md:px-24">

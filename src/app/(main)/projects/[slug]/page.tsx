@@ -5,12 +5,38 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import React from "react";
 import * as motion from "framer-motion/client";
+import { Metadata, ResolvingMetadata } from "next";
+import { PageConfig } from "@/utils/constants";
 
-export default function ProjectDetailDetail({
-  params,
-}: {
-  params: { slug: string };
-}) {
+type Props = {
+  params: {
+    slug: string;
+  };
+};
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  const slig = params.slug;
+  const project = allProjects.find(
+    (project) => project._raw.flattenedPath == `projects/${params.slug}`,
+  );
+
+  return {
+    title: project?.title,
+    description: project?.description,
+    openGraph: {
+      title: project?.title,
+      description: project?.description,
+      url: "https://andriawan.vercel.app" + project?.url,
+      siteName: PageConfig.applicationName,
+      type: "website",
+    },
+  };
+}
+
+export default function ProjectDetailDetail({ params }: Props) {
   const project = allProjects.find(
     (project) => project._raw.flattenedPath == `projects/${params.slug}`,
   );

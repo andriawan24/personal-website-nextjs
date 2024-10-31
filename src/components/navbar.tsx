@@ -46,7 +46,7 @@ export default function Navbar(): ReactElement {
   return (
     <motion.header
       className={classNames(
-        "sticky z-10 top-0 flex flex-row justify-between items-center px-4 md:px-32 bg-color-background-dark transition-all duration-200 py-3",
+        "sticky z-10 top-0 flex flex-row justify-between items-center px-4 md:px-24 bg-color-background-dark transition-all duration-200 py-3",
         {
           "shadow-md": !onTop,
         },

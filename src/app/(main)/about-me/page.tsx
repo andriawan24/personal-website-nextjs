@@ -7,6 +7,8 @@ import SectionExperiences from "./section-experiences";
 
 export const metadata: Metadata = {
   title: "About Me",
+  description:
+    "Description who am I, what are my skills, where I am working and have worked. Anything about me.",
 };
 
 export default function About() {

@@ -6,6 +6,7 @@ import { Metadata } from "next";
 const plusJakartaSans = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  applicationName: PageConfig.applicationName,
   title: {
     template: `%s | ${PageConfig.title}`,
     default: PageConfig.title,
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
   },
   generator: PageConfig.generator,
   keywords: PageConfig.keywords,
+  creator: PageConfig.author,
   referrer: "same-origin",
   robots: {
     index: true,

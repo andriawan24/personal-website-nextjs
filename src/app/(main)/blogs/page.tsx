@@ -3,6 +3,13 @@ import React from "react";
 import * as motion from "framer-motion/client";
 import BlogItem from "@/components/blog-item";
 import { allBlogs } from "contentlayer/generated";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Blogs",
+  description:
+    "Blogs that I have made. I usually wrote something related to the mobile application development especially for android development.",
+};
 
 export default function BlogsPage() {
   const blogs = allBlogs;

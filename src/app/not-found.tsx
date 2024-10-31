@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import React from "react";
 
-export default function NotFoundPage() {
+export default function NotFoundPage(): React.ReactElement {
   const router = useRouter();
 
   return (

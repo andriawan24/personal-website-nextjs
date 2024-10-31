@@ -1,4 +1,5 @@
 export const PageConfig = {
+  applicationName: "Naufal Fawwaz Andriawan Personal Website",
   title: "Naufal Fawwaz Andriawan",
   description:
     "As a software engineer, I enjoy creating apps that solve problems and delight users. I have 4+ years of experience in developing mobile applications.",
