@@ -2,6 +2,7 @@ import Breadcrumb from "@/components/breadcrumb";
 import React from "react";
 import RecentProjects from "../recent-projects";
 import * as motion from "framer-motion/client";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Projects",
