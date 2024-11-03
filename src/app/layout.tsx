@@ -3,6 +3,7 @@ import "./globals.css";
 import { PageConfig } from "@/utils/constants";
 import { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const plusJakartaSans = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
@@ -57,6 +58,7 @@ export default function RootLayout({
       <body className={`${plusJakartaSans.className} bg-color-background-dark`}>
         {children}
       </body>
+      <SpeedInsights />
       <Analytics />
     </html>
   );
