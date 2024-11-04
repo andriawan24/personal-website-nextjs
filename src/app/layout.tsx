@@ -57,9 +57,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${plusJakartaSans.className} bg-color-background-dark`}>
         {children}
+        <SpeedInsights />
+        <Analytics />
       </body>
-      <SpeedInsights />
-      <Analytics />
     </html>
   );
 }
