@@ -46,6 +46,13 @@ export const metadata: Metadata = {
     },
   ],
   manifest: "/favicon/site.webmanifest",
+  openGraph: {
+    title: PageConfig.applicationName,
+    description: PageConfig.description,
+    url: "https://andriawan.vercel.app",
+    siteName: PageConfig.applicationName,
+    type: "website",
+  },
 };
 
 export default function RootLayout({
