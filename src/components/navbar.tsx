@@ -46,19 +46,12 @@ export default function Navbar(): ReactElement {
   return (
     <motion.header
       className={classNames(
-        "sticky z-10 top-0 flex flex-row justify-between items-center px-4 md:px-24 bg-color-background-dark transition-all duration-200 py-3",
-        {
-          "shadow-md": !onTop,
-        },
-        {
-          "shadow-none": onTop,
-        },
+        "navbar",
+        { "shadow-md": !onTop },
+        { "shadow-none": onTop },
       )}
     >
-      <Link
-        href="/"
-        className="cursor-pointer hover:scale-105 duration-200 transition-all active:scale-100 active:duration-0"
-      >
+      <Link href="/" className="nav-logo">
         <Image
           src={"/images/img_logo.webp"}
           width={80}
@@ -66,13 +59,13 @@ export default function Navbar(): ReactElement {
           alt={Strings.imageLogoAlt}
         />
       </Link>
-      <nav aria-label="Main Navigation">
-        <ul className="flex flex-row items-center gap-4 md:gap-7">
+      <nav>
+        <ul className="nav-container">
           {menus.map((menu) => {
             const isActive = pathname == menu.url;
             return (
               <li
-                className={`${isActive ? "text-color-text-primary" : "text-color-text-secondary"} font-medium text-lg md:text-lg transition-opacity duration-200 hover:opacity-90`}
+                className={`${isActive ? "text-color-text-primary" : "text-color-text-secondary"} nav-item`}
                 key={menu.url}
               >
                 <a href={menu.url}>{menu.name}</a>

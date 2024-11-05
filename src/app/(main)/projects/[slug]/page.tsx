@@ -1,5 +1,4 @@
 import Breadcrumb from "@/components/breadcrumb";
-import { Strings } from "@/utils/strings";
 import { allProjects } from "contentlayer/generated";
 import Image from "next/image";
 import { notFound } from "next/navigation";

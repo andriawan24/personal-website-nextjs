@@ -1,3 +1,73 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.leading-140 {
+  line-height: 140%;
+}
+
+.navbar {
+  @apply sticky z-10 top-0 flex flex-row justify-between items-center px-4 md:px-24 bg-color-background-dark transition-all duration-200 py-3;
+}
+
+.nav-logo {
+  @apply cursor-pointer hover:scale-105 duration-200 transition-all active:scale-100 active:duration-0;
+}
+
+.nav-container {
+  @apply flex flex-row items-center gap-4 md:gap-7;
+}
+
+.nav-item {
+  @apply font-medium text-lg md:text-lg transition-opacity duration-200 hover:opacity-90;
+}
+
+.project-card {
+  @apply cursor-pointer transition-all duration-200 hover:opacity-80 hover:scale-[0.99] active:opacity-100;
+}
+
+.project-card > .thumbnail {
+  @apply w-full aspect-video object-cover rounded-t-lg;
+}
+
+/* Home page */
+.home-section-container {
+  @apply flex flex-col gap-4 px-4 md:px-24 py-4 md:py-12;
+}
+
+/* About Me */
+.about-section-title {
+  @apply font-bold text-2xl text-color-text-secondary;
+}
+
+.experiences-container {
+  @apply flex flex-col gap-2 pt-6 pb-4 md:pb-32;
+}
+
+.experiences-container .experiences-header {
+  @apply flex flex-col justify-between gap-2 md:gap-4;
+}
+
+.experiences-container .experiences-header > .title {
+  @apply text-color-text-primary font-bold text-2xl md:text-3xl leading-140;
+}
+
+.experiences-container .experiences-header > .subtitle {
+  @apply text-color-text-secondary font-bold leading-140;
+}
+
+.experiences-content {
+  @apply flex flex-row gap-2 mt-4;
+}
+
+.experiences-content .text {
+  @apply text-base md:text-lg leading-140 text-color-text-secondary;
+}
+
+.experiences-content .divider {
+  @apply w-0.5 bg-color-text-primary opacity-60 rounded-full mx-6 h-auto;
+}
+
+.experiences-content .list {
+  @apply list-disc pl-6 flex flex-col gap-2 mt-2;
+}

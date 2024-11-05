@@ -22,9 +22,7 @@ export default function ProjectsPage() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        transition={{
-          duration: 0.3,
-        }}
+        transition={{ duration: 0.3 }}
         className="flex flex-col gap-12 pt-6 pb-16"
       >
         <RecentProjects />

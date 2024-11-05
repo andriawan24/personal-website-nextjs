@@ -7,25 +7,21 @@ import Image from "next/image";
 import Pill from "./views/pill";
 import { Project } from "contentlayer/generated";
 
-export default function ProjectItem({
-  project,
-}: {
+interface Props {
   project: Project;
-}): React.ReactElement {
+}
+
+export default function ProjectItem({ project }: Props): React.ReactElement {
   const [isHovered, setIsHovered] = useState(false);
   return (
-    <Link
-      key={project._id}
-      href={project.url}
-      className="cursor-pointer transition-all duration-200 hover:opacity-80 hover:scale-[0.99] active:opacity-100"
-    >
+    <Link className="project-card" key={project._id} href={project.url}>
       <Image
-        className="w-full aspect-video object-cover rounded-t-lg"
+        className="thumbnail"
         src={project.thumbnail}
         width={700}
         height={600}
         priority
-        alt="This is generated image from lorem picsum"
+        alt={`This image is a thumbnail for project ${project.title}`}
       />
       <div className="bg-color-background-card-dark rounded-b-lg p-4">
         <h5 className="text-lg md:text-xl font-bold text-color-text-primary leading-140">
