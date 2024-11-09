@@ -2,8 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Common */
 .leading-140 {
   line-height: 140%;
+}
+
+.hero-landing .btn {
+  @apply flex flex-row items-center gap-1 md:gap-2 transition-all hover:opacity-80 px-4 md:px-6 py-3 rounded-lg;
+}
+
+.hero-landing .bordered {
+  @apply border-2 border-color-text-primary;
 }
 
 .navbar {

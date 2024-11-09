@@ -209,6 +209,10 @@ export const Skill = defineDocumentType(() => ({
       required: true,
       default: false,
     },
+    position: {
+      type: "number",
+      required: true,
+    },
     tooltip: {
       type: "string",
       required: true,
