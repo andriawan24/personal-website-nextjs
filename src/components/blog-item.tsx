@@ -32,8 +32,8 @@ export default function BlogItem({ blog }: Props) {
         <Image
           className="absolute bottom-4 start-4"
           src={blog.publication_logo}
-          width={41}
-          height={41}
+          width={24}
+          height={24}
           priority
           alt="This is generated image from lorem picsum"
         />
