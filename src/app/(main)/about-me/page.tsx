@@ -16,7 +16,7 @@ export default function About() {
     <div className="px-4 md:px-24 overflow-hidden">
       <Breadcrumb title="About Me" />
       <SectionProfile />
-      <div className="flex flex-row gap-20">
+      <div className="flex flex-col md:flex-row gap-0 md:gap-20">
         <SectionSkills />
         <SectionExperiences />
       </div>

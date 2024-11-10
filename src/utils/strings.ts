@@ -8,7 +8,7 @@ export const Strings = {
   linkBlogs: "/blogs",
   myProjects: "My Projects",
   linkMyProjects: "/projects",
-  aboutMeTitle: "You can call me Fawwaz",
+  aboutMeTitle: "Naufal Fawwaz Andriawan",
   aboutMeDescription1: `
     My programming journey started when I was in junior high school.
     I played around with my computer until I decided to enter Vocational High School with a

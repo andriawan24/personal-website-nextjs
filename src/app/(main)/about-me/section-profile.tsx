@@ -28,14 +28,14 @@ export default function SectionProfile() {
           alt={Strings.imageProfileAlt}
         />
       </motion.div>
-      <div className="flex flex-col gap-2 md:gap-6">
+      <div className="flex flex-col gap-2 md:gap-4">
         <h3 className="text-3xl font-semibold text-color-text-primary leading-140">
           {Strings.aboutMeTitle}
         </h3>
-        <p className="text-lg md:text-xl font-medium leading-140 text-color-text-secondary">
+        <p className="text-lg md:text-lg font-medium leading-140 text-color-text-secondary">
           {Strings.aboutMeDescription1}
         </p>
-        <p className="text-lg md:text-xl font-medium leading-140 text-color-text-secondary">
+        <p className="text-lg md:text-lg font-medium leading-140 text-color-text-secondary">
           {Strings.aboutMeDescription2}
         </p>
       </div>
