@@ -24,9 +24,7 @@ export default function BlogsPage() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        transition={{
-          duration: 0.3,
-        }}
+        transition={{ duration: 0.3 }}
         className="flex flex-col gap-12 pt-6 pb-4 md:pb-16"
       >
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">

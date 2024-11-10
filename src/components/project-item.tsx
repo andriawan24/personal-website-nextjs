@@ -27,7 +27,7 @@ export default function ProjectItem({ project }: Props): React.ReactElement {
         <h5 className="text-lg md:text-xl font-bold text-color-text-primary leading-140">
           {project.title}
         </h5>
-        <p className="leading-140 text-color-text-primary mt-2 md:mt-6 line-clamp-4">
+        <p className="leading-140 text-color-text-primary mt-2 md:mt-4 line-clamp-4">
           {project.description}
         </p>
         {project.tags.length > 0 && (

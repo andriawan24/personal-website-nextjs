@@ -1,8 +1,5 @@
 import BlogItem from "@/components/blog-item";
-import Pill from "@/components/views/pill";
 import { allBlogs } from "contentlayer/generated";
-import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 
 export default function RecentBlogs() {

@@ -17,7 +17,7 @@ export default function Breadcrumb({
   const pathname = usePathname();
 
   return (
-    <div className="flex flex-col gap-4 md:gap-8 py-4 bg-color-background-card-dark md:bg-transparent rounded-md">
+    <div className="flex flex-col gap-4 md:gap-6 py-4 bg-color-background-card-dark md:bg-transparent rounded-md">
       <div className="flex flex-row items-center justify-center">
         {pathname.split("/").map((path, index) => {
           const lastIndex = index == pathname.split("/").length - 1;
@@ -48,7 +48,7 @@ export default function Breadcrumb({
           );
         })}
       </div>
-      <h1 className="text-center text-2xl md:text-5xl font-bold leading-140 text-color-text-primary">
+      <h1 className="text-center text-2xl md:text-4xl font-bold leading-140 text-color-text-primary">
         {title}
       </h1>
       {tags && (

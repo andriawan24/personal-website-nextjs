@@ -16,9 +16,7 @@ export default function SectionProfile() {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
-      transition={{
-        duration: 0.3,
-      }}
+      transition={{ duration: 0.3 }}
     >
       <motion.div className="inline-block lg:w-[1500px] lg:h-[550[x]">
         <Image
@@ -30,14 +28,14 @@ export default function SectionProfile() {
           alt={Strings.imageProfileAlt}
         />
       </motion.div>
-      <div className="flex flex-col gap-2 md:gap-6">
-        <h3 className="text-2xl font-semibold text-color-text-primary leading-140">
+      <div className="flex flex-col gap-2 md:gap-4">
+        <h3 className="text-3xl font-semibold text-color-text-primary leading-140">
           {Strings.aboutMeTitle}
         </h3>
-        <p className="text-lg md:text-xl font-medium leading-140 text-color-text-secondary">
+        <p className="text-lg md:text-lg font-medium leading-140 text-color-text-secondary">
           {Strings.aboutMeDescription1}
         </p>
-        <p className="text-lg md:text-xl font-medium leading-140 text-color-text-secondary">
+        <p className="text-lg md:text-lg font-medium leading-140 text-color-text-secondary">
           {Strings.aboutMeDescription2}
         </p>
       </div>

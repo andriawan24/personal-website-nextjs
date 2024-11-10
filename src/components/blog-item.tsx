@@ -42,7 +42,7 @@ export default function BlogItem({ blog }: Props) {
         <h5 className="text-lg md:text-xl font-bold text-color-text-primary leading-140 line-clamp-2">
           {blog.title}
         </h5>
-        <p className="leading-140 text-color-text-primary mt-2 md:mt-6 line-clamp-4">
+        <p className="leading-140 text-color-text-primary mt-2 md:mt-4 line-clamp-4">
           {blog.description}
         </p>
         {blog.tags.length > 0 && (
@@ -57,9 +57,7 @@ export default function BlogItem({ blog }: Props) {
                 >
                   <Pill text={`+${blog.tags.length - 1}`} />
                   <motion.div
-                    animate={{
-                      opacity: isHovered ? 1 : 0,
-                    }}
+                    animate={{ opacity: isHovered ? 1 : 0 }}
                     initial={{ opacity: 0 }}
                     transition={{ duration: 0.2 }}
                     className="absolute top-0 translate-x-14 bg-white px-2 py-2 rounded-lg w-max"
