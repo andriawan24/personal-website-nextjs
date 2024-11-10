@@ -34,6 +34,7 @@ export default function HeroLanding() {
             <Link
               target="_blank"
               href="https://drive.google.com/file/d/1VF2v5nn-JCUPeafbBJ4t67UOdCtfxAt1/view?usp=drive_link"
+              rel="noopener noreferrer"
               className="btn bg-color-background-button-dark"
             >
               <span className="text-color-text-primary text-base md:text-md font-bold leading-140">
