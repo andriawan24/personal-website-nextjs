@@ -49,11 +49,11 @@ export default function ProjectDetailDetail({ params }: Props) {
       <div className="px-4 min-w-full">
         <Breadcrumb title={project.title} tags={project.tags} />
       </div>
-      <div className="mt-8">
+      <div className="mt-8 px-4 md:px-32">
         <Image
           src={project.thumbnail}
           alt="Project Image"
-          className="h-96 w-full object-cover"
+          className="aspect-[5/2] object-cover rounded-xl shadow-sm"
           width={1920}
           height={1080}
         />
