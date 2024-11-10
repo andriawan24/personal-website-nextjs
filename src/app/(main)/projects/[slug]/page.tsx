@@ -50,13 +50,25 @@ export default function ProjectDetailDetail({ params }: Props) {
         <Breadcrumb title={project.title} tags={project.tags} />
       </div>
       <div className="mt-8 px-4 md:px-32">
-        <Image
-          src={project.thumbnail}
-          alt="Project Image"
-          className="aspect-[5/2] object-cover rounded-xl shadow-sm"
-          width={1920}
-          height={1080}
-        />
+        <motion.div
+          className="flex flex-col gap-6 "
+          variants={{
+            hidden: { y: 200, opacity: 0 },
+            visible: { y: 0, opacity: 1 },
+          }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ duration: 0.3 }}
+        >
+          <Image
+            src={project.thumbnail}
+            alt="Project Image"
+            className="aspect-[5/2] object-cover rounded-xl shadow-sm"
+            width={1920}
+            height={1080}
+          />
+        </motion.div>
       </div>
       <div className="flex flex-col px-4 md:px-32 py-12">
         <motion.div
@@ -68,9 +80,7 @@ export default function ProjectDetailDetail({ params }: Props) {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          transition={{
-            duration: 0.3,
-          }}
+          transition={{ duration: 0.3 }}
         >
           <h5 className="text-color-text-primary text-2xl font-bold leading-140">
             About The Project
