@@ -1,10 +1,13 @@
+"use client";
+
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
 import { Strings } from "@/utils/strings";
 import IconArrowUpRight from "@/components/icons/icon-arrow-up-right";
 import IconEmail from "@/components/icons/icon-email";
-import * as motion from "framer-motion/client";
+import { motion } from "framer-motion";
+import TextLoop from "@/components/text-loop";
 
 export default function HeroLanding() {
   return (
@@ -19,15 +22,22 @@ export default function HeroLanding() {
       transition={{ duration: 0.3 }}
       className="flex flex-row items-center gap-20 py-4 md:py-20 px-4 md:px-24 hero-landing"
     >
-      <div>
-        <h1 className="text-2xl md:text-3xl leading-140 font-bold text-color-text-primary">
-          Hello, I&apos;m a Software Engineer
+      <div className="flex flex-col">
+        <h1 className="text-4xl md:text-5xl leading-140 font-bold text-color-text-primary">
+          Naufal Fawwaz Andriawan
         </h1>
-        <p className="text-color-text-secondary leading-140 text-md md:text-lg mt-2">
-          I love coding, primarily for creating Android and iOS applications,
-          but I like to explore any other things from web frontend, backend, to
-          AI. My goal is to become a skilled and versatile software engineer,
-          delivering high-quality solutions for people
+        <TextLoop
+          texts={[
+            "Mobile Application Engineer",
+            "F1 Enthusiast",
+            "Football Enthusiast",
+            "Anime Lovers",
+          ]}
+        />
+        <p className="text-color-text-secondary leading-140 text-md md:text-xl mt-4">
+          I`m a mobile application engineer with more than 3 years of
+          experience. My goal is to become a proficient and versatile mobile
+          application engineer and deliver high-quality solutions for people
         </p>
         <div className="flex flex-row items-center mt-8 gap-2 md:gap-6">
           <motion.span whileTap={{ scale: 1.1 }}>
