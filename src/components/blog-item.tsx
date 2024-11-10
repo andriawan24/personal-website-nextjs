@@ -57,9 +57,7 @@ export default function BlogItem({ blog }: Props) {
                 >
                   <Pill text={`+${blog.tags.length - 1}`} />
                   <motion.div
-                    animate={{
-                      opacity: isHovered ? 1 : 0,
-                    }}
+                    animate={{ opacity: isHovered ? 1 : 0 }}
                     initial={{ opacity: 0 }}
                     transition={{ duration: 0.2 }}
                     className="absolute top-0 translate-x-14 bg-white px-2 py-2 rounded-lg w-max"

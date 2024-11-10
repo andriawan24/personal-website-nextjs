@@ -17,19 +17,17 @@ export default function HeroLanding() {
       whileInView="visible"
       viewport={{ once: true }}
       transition={{ duration: 0.3 }}
-      className="flex flex-row items-center gap-10 py-4 md:py-20 px-4 md:px-24 hero-landing"
+      className="flex flex-row items-center gap-20 py-4 md:py-20 px-4 md:px-24 hero-landing"
     >
       <div>
-        <h1 className="text-4xl md:text-5xl leading-140 font-bold text-color-text-primary">
-          Naufal Fawwaz Andriawan
+        <h1 className="text-2xl md:text-3xl leading-140 font-bold text-color-text-primary">
+          Hello, I&apos;m a Software Engineer
         </h1>
-        <h3 className="text-md md:text-2xl mt-4 leading-140 font-semibold text-color-text-primary">
-          Mobile Application Engineer
-        </h3>
-        <p className="text-color-text-secondary leading-140 text-md md:text-xl mt-4">
-          I`m a mobile application engineer with more than 3 years of
-          experience. My goal is to become a proficient and versatile mobile
-          application engineer and deliver high-quality solutions for people
+        <p className="text-color-text-secondary leading-140 text-md md:text-lg mt-2">
+          I love coding, primarily for creating Android and iOS applications,
+          but I like to explore any other things from web frontend, backend, to
+          AI. My goal is to become a skilled and versatile software engineer,
+          delivering high-quality solutions for people
         </p>
         <div className="flex flex-row items-center mt-8 gap-2 md:gap-6">
           <motion.span whileTap={{ scale: 1.1 }}>
@@ -38,7 +36,7 @@ export default function HeroLanding() {
               href="https://drive.google.com/file/d/1VF2v5nn-JCUPeafbBJ4t67UOdCtfxAt1/view?usp=drive_link"
               className="btn bg-color-background-button-dark"
             >
-              <span className="text-color-text-primary text-base md:text-lg font-bold leading-140">
+              <span className="text-color-text-primary text-base md:text-md font-bold leading-140">
                 Resume PDF
               </span>
               <IconArrowUpRight />
@@ -50,7 +48,7 @@ export default function HeroLanding() {
               href="mailto:fawaznaufal23@gmail.com"
               className="btn bordered"
             >
-              <span className="text-color-text-primary text-base md:text-lg font-bold leading-140">
+              <span className="text-color-text-primary text-base md:text-md font-bold leading-140">
                 Contact Me
               </span>
               <IconEmail />
