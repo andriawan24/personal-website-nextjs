@@ -27,12 +27,7 @@ export default function HeroLanding() {
           Naufal Fawwaz Andriawan
         </h1>
         <TextLoop
-          texts={[
-            "Mobile Application Engineer",
-            "F1 Enthusiast",
-            "Football Enthusiast",
-            "Anime Lovers",
-          ]}
+          texts={["Mobile App Engineer", "F1 Enthusiast", "Anime Enjoyer"]}
         />
         <p className="text-color-text-secondary leading-140 text-md md:text-xl mt-4">
           I`m a mobile application engineer with more than 3 years of
